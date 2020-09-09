@@ -1,0 +1,29 @@
+* {
+    background: lightgoldenrodyellow;
+}
+
+input[type=text]{
+    background-color: white;
+    margin: 4px;
+    outline: none;
+}
+
+#age {
+    width: 40px;
+}
+
+button {
+    text-align: center;
+    font-size: 18px;
+    color: black;
+    background-color: Azure;
+    padding: 12px 40px;
+    border-radius: 4px;
+}
+
+footer {
+    position: absolute;
+    padding: 5px;
+    bottom: 0;
+    text-align: center;
+}
