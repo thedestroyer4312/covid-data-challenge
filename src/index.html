@@ -6,8 +6,15 @@
         <title>COVID19 Data Challenge Quiz</title>
     </head>
     <body>
+
+      <div class="topnav">
+        <a class="active" href="./index.html">Take the quiz</a>
+        <a href="./moreInfo.html">More Info</a>
+        <a href="./about.html">About</a>
+      </div>
+
         <h1 id = "Title">COVID-19 Transmission Quiz</h1>
-            <form id = "userInput">
+        <form id = "userInput">
 
 <button type="button" class="collapsible" id="personalInfo">Personal Information</button>
 <div class="content">
@@ -70,7 +77,7 @@
 <div class="content">
     <p>This section will ask you about household factors and living conditions</p>
 
-        Where do you live?
+        Where do you live? <br>
 
         How many people do you live with?
 
@@ -126,17 +133,13 @@
             <label for="socDist3">Never</label>
         </div>
 
-</div> <br>
+</div> <br> <br>
 
-            <button type="button" id="submit">Submit</button>
+            <a href="./quizResult.html"><button type="button" id="submit">Submit</button></a>
             <button type="reset" id="reset">Reset</button>
         </form> <br>
-
-            <div class="result"> <strong>RESULT:</strong><p><!--Output goes here--></p> </div>
-            <p>Here are some tips and suggestions to decrease your chances of getting infected.</p>
     </body>
 
     <script src = "app.js"></script>
     <noscript>Please turn on JavaScript!</noscript>
-<!--    <footer> <p><a href="https://github.com/thedestroyer4312/covid-data-challenge">GitHub Repo Here</a></p> </footer> -->
 </html>
