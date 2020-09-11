@@ -9,10 +9,13 @@
         <h1 id = "Title">COVID-19 Transmission Quiz</h1>
             <form id = "userInput">
 
+<button type="button" class="collapsible" id="personalInfo">Personal Information</button>
+<div class="content">
+    <p>This section will ask you about XXXYYYZZZ</p>
                 <label for="Age">Enter your age:</label>
                 <input type="text" id="age" name="age" min="0" max="99"> <br>
 
-                <p>What is your sex?</p>
+                What is your sex?
                 <div>
                     <input type="radio" id="male" name="sex" value="male">
                     <label for="male">Male</label>
@@ -26,7 +29,7 @@
                     <label for="other">Other</label>
                 </div>
 
-                <p>What is your race?</p>
+                What is your race?
                 <div>
                     <input type="checkbox" id="race_white" name="race" value="race_white">
                         <label for="race_white">White</label> <br>
@@ -40,17 +43,100 @@
                         <label for="race_pacificIslander">Native Hawaiian/Other Pacific Islander</label> <br>
                 </div> <br>
 
-                <p>Where do you live?</p> <br>
+                What is your income?
+                <div>
+                    <input type="radio" id="income1" name="income" value="income1">
+                    <label for="income1">&lt;$15,000</label>
+                </div>
+                <div>
+                    <input type="radio" id="income2" name="income" value="income2">
+                    <label for="income2">$15,000-$25,000</label>
+                </div>
+                <div>
+                    <input type="radio" id="income3" name="income" value="income3">
+                    <label for="income3">$25,001-$35,000</label>
+                </div>
+                <div>
+                    <input type="radio" id="income4" name="income" value="income4">
+                    <label for="income4">$35,000-$50,000</label>
+                </div>
+                <div>
+                    <input type="radio" id="income5" name="income" value="income5">
+                    <label for="income5">$50,000+</label>
+                </div>
+</div> <br>
 
-                <button type="button" id="submit">Submit</button>
-                <button type="reset" id="reset">Reset</button>
-            </form>
+<button type="button" class="collapsible" id="FamilyInfo">Household & Location</button>
+<div class="content">
+    <p>This section will ask you about household factors and living conditions</p>
 
-            <div class="result"> <p>RESULT:<!--Output goes here--></p> </div>
+        Where do you live?
+
+        How many people do you live with?
+
+</div> <br>
+
+<button type="button" class="collapsible" id="Behavior">Behavior</button>
+<div class="content">
+    <p>This section will ask you about your day to day behavior over the past 14 days</p>
+
+        Which one of these best describes your mask habits?
+        <div>
+            <input type="radio" id="mask1" name="mask" value="mask1">
+            <label for="mask1">I always wear a mask when I leave the house, and never take it off</label>
+        </div>
+        <div>
+            <input type="radio" id="mask2" name="mask" value="mask2">
+            <label for="mask2">I only wear my mask when I'm indoors or around people</label>
+        </div>
+        <div>
+            <input type="radio" id="mask3" name="mask" value="mask3">
+            <label for="mask3">I sometimes wear a mask</label>
+        </div>
+        <div>
+            <input type="radio" id="mask4" name="mask" value="mask4">
+            <label for="mask4">I never wear a mask</label>
+        </div> <br>
+
+        How often do you wash your hands?
+        <div>
+            <input type="radio" id="handwash1" name="handwash" value="handwash1">
+            <label for="handwash1">Very frequently</label>
+        </div>
+        <div>
+            <input type="radio" id="handwash2" name="handwash" value="handwash2">
+            <label for="handwash2">Sometimes</label>
+        </div>
+        <div>
+            <input type="radio" id="handwash3" name="handwash" value="handwash3">
+            <label for="handwash3">Not very frequently</label>
+        </div> <br>
+
+        How often do you adhere to social distancing?
+        <div>
+            <input type="radio" id="socDist1" name="socDist" value="socDist1">
+            <label for="socDist1">Very often</label>
+        </div>
+        <div>
+            <input type="radio" id="socDist2" name="socDist" value="socDist2">
+            <label for="socDist2">Sometimes</label>
+        </div>
+        <div>
+            <input type="radio" id="socDist3" name="socDist" value="socDist3">
+            <label for="socDist3">Never</label>
+        </div>
+
+</div> <br>
+
+            <button type="button" id="submit">Submit</button>
+            <button type="reset" id="reset">Reset</button>
+        </form> <br>
+
+            <div class="result"> <strong>RESULT:</strong><p><!--Output goes here--></p> </div>
             <p>Here are some tips and suggestions to decrease your chances of getting infected.</p>
     </body>
 
     <script src = "app.js"></script>
     <noscript>Please turn on JavaScript!</noscript>
-    <footer> <p><a href="https://github.com/thedestroyer4312/covid-data-challenge">GitHub Repo Here</a></p> </footer>
+<!--    <footer> <p><a href="https://github.com/thedestroyer4312/covid-data-challenge">GitHub Repo Here</a></p> </footer> -->
 </html>
