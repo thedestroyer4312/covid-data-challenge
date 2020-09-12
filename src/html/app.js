@@ -1,6 +1,6 @@
 const button = document.getElementById('submit');
 const output = document.querySelector(".result > p");
-const output2 = document.getElementById('hey');
+const graphSpace = document.querySelector(".graphs > p");
 const coll = document.getElementsByClassName("collapsible");
 
 main();
@@ -12,9 +12,14 @@ function main() {
         coll[i].addEventListener('click', togglePanel);
     }
 
-    window.addEventListener('load', (event) => {
+    window.addEventListener('load', async (event) => {
       let riskPer = Math.random() * 100;
-      document.querySelector(".result > p").innerHTML = `Based on the data given, you are at a ${riskPer.toFixed(2)}% increased risk of COVID19.`;
+      output.innerHTML = `Based on the data given, you are at a ${riskPer.toFixed(2)}% increased risk of COVID19.`;
+
+      const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+      let myImage = new Image(file.width, file.height);
+      myImage.src = file;
+      document.body.appendChild(myImage);
     });
 
 }
