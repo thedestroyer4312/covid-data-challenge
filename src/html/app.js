@@ -1,6 +1,6 @@
 const button = document.getElementById('submit');
 const output = document.querySelector(".result > p");
-const graphSpace = document.querySelector(".graphs > p");
+const graphSpace = document.querySelector(".graphsHere > p");
 const coll = document.getElementsByClassName("collapsible");
 
 main();
@@ -13,15 +13,21 @@ function main() {
     }
 
     window.addEventListener('load', async (event) => {
-      let riskPer = Math.random() * 100;
-      output.innerHTML = `Based on the data given, you are at a ${riskPer.toFixed(2)}% increased risk of COVID19.`;
 
+      fetch('http://localhost:3000/getRandomNumber')
+        .then(response => response.json())
+        .then(data => {
+            //print to website
+            output.innerHTML = `Based on the data given, you are at a ${data['number']}% increased risk of COVID19.`;
+        })
+        .catch(error => console.log("API error"));
+
+      //this is where the graphs go
       const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
       let myImage = new Image(file.width, file.height);
       myImage.src = file;
-      document.body.appendChild(myImage);
+      graphSpace.appendChild(myImage);
     });
-
 }
 
 function togglePanel() {
