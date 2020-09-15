@@ -12,22 +12,34 @@ function main() {
         coll[i].addEventListener('click', togglePanel);
     }
 
-    window.addEventListener('load', async (event) => {
-
-      fetch('http://localhost:3000/getRandomNumber')
-        .then(response => response.json())
-        .then(data => {
-            //print to website
-            output.innerHTML = `Based on the data given, you are at a ${data['number']}% increased risk of COVID19.`;
+    window.onload = async function () {
+        let data = {
+            age: "99",
+            sex: "male",
+            race: "white",
+            income: "30k"
+        };
+        await fetch('http://localhost:3000/processData', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data),
         })
-        .catch(error => console.log("API error"));
+          .then(response => response.json())
+          .then(data => {
+              //print to website
+              output.innerHTML = JSON.stringify(data);
+              //output.innerHTML = `Based on the data given, you are at a ${data['number']}% increased risk of COVID19.`;
+          })
+          .catch(error => console.log("API error"));
 
-      //this is where the graphs go
-      const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
-      let myImage = new Image(file.width, file.height);
-      myImage.src = file;
-      graphSpace.appendChild(myImage);
-    });
+        //this is where the graphs go
+        const { file } = await fetch('https://aws.random.cat/meow').then(response => response.json());
+        let myImage = new Image(file.width, file.height);
+        myImage.src = file;
+        graphSpace.appendChild(myImage);
+    }
 }
 
 function togglePanel() {
