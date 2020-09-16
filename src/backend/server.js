@@ -3,14 +3,14 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.options('*', cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/getReq', function (request, response) {
+app.get('/', function (request, response) {
   response.send('Hello there!');
 });
 
@@ -30,7 +30,7 @@ app.post('/processData', function (request, response, next) {
     let income = request.body.income;
 
     let respJSON = {
-        "age:": age,
+        "age": age,
         "ageRisk": Math.floor(Math.random() * 100),
         "sex": sex,
         "sexRisk": Math.floor(Math.random() * 100),
@@ -44,5 +44,5 @@ app.post('/processData', function (request, response, next) {
 });
 
 app.listen(port, () => {
-  console.log(`Express listening at http://localhost:${port}`);
+  console.log(`Express server at http://localhost:${port}`);
 });

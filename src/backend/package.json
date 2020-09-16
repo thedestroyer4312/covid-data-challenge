@@ -4,8 +4,13 @@
   "description": "Express and NodeJS backend to the website. This recieves POST requests and runs data calculations before sending the quiz results back to the website.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+   "express": "^4.16.3",
+   "cors": "^2.8.5",
+   "body-parser": "^1.19.0"
+ }
 }

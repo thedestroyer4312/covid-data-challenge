@@ -1,5 +1,4 @@
 const button = document.getElementById('submit');
-const output = document.querySelector(".result > p");
 const graphSpace = document.querySelector(".graphsHere > p");
 const coll = document.getElementsByClassName("collapsible");
 
@@ -13,24 +12,30 @@ function main() {
     }
 
     window.onload = async function () {
-        let data = {
+        let userData = {
             age: "99",
             sex: "male",
             race: "white",
             income: "30k"
         };
-        await fetch('http://localhost:3000/processData', {
+        await fetch('https://covid19-dc.wn.r.appspot.com/processData', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(userData),
         })
           .then(response => response.json())
           .then(data => {
               //print to website
-              output.innerHTML = JSON.stringify(data);
-              //output.innerHTML = `Based on the data given, you are at a ${data['number']}% increased risk of COVID19.`;
+              document.getElementById('userAge').innerHTML = data.age;
+              document.getElementById('userAgeR').innerHTML = data.ageRisk;
+              document.getElementById('userSex').innerHTML = data.sex;
+              document.getElementById('userSexR').innerHTML = data.sexRisk;
+              document.getElementById('userRace').innerHTML = data.race;
+              document.getElementById('userRaceR').innerHTML = data.raceRisk;
+              document.getElementById('userIncome').innerHTML = data.income;
+              document.getElementById('userIncomeR').innerHTML = data.incomeRisk;
           })
           .catch(error => console.log("API error"));
 
