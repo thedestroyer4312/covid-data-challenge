@@ -7,6 +7,8 @@ main();
 
 function main() {
 
+    const dataProcessURL = 'http://localhost:3000/processData';
+
     for (let i = 0; i < coll.length; i++)
     {
         coll[i].addEventListener('click', togglePanel);
@@ -31,6 +33,7 @@ async function printSurveyResponses() {
             race: formData.get("race"),
             income: formData.get("income")
         };
+
         await fetch('https://covid19-dc.wn.r.appspot.com/processData', {
           method: 'POST',
           headers: {
@@ -60,4 +63,8 @@ function togglePanel() {
     } else {
         content.style.display = "block";
     }
+}
+
+function submitForm(){
+    console.log("submitForm has been called!");
 }
