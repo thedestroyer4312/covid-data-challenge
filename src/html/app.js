@@ -6,6 +6,8 @@ const coll = document.getElementsByClassName("collapsible");
 main();
 
 function main() {
+    
+    const dataProcessURL = 'http://localhost:3000/processData';
 
     for (let i = 0; i < coll.length; i++)
     {
@@ -19,7 +21,7 @@ function main() {
             race: "white",
             income: "30k"
         };
-        await fetch('http://localhost:3000/processData', {
+        await fetch(dataProcessURL, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -49,4 +51,8 @@ function togglePanel() {
     } else {
         content.style.display = "block";
     }
+}
+
+function submitForm(){
+    console.log("submitForm has been called!");
 }

@@ -15,12 +15,12 @@
       </div>
 
         <h1 id = "Title">COVID-19 Transmission Quiz</h1>
-        <form id = "userInput">
+        <form id = "userInput" action="/app.js">
 
 <button type="button" class="collapsible" id="personalInfo">Personal Information</button>
 <div class="content">
     <p>This section will ask you about XXXYYYZZZ</p>
-                <label for="Age">Enter your age:</label>
+                <label for="age">Enter your age:</label>
                 <input type="text" id="age" name="age" min="0" max="99"> <br>
 
                 What is your sex?
@@ -136,7 +136,7 @@
 
 </div> <br> <br>
 
-            <a href="./quizResult.html"><button type="button" id="submit">Submit</button></a>
+            <a href="./quizResult.html"><button type="submit" id="submit" onclick="submitForm()">Submit</button></a>
             <button type="reset" id="reset">Reset</button>
         </form> <br>
     </body>
