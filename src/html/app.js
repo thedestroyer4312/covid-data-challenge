@@ -7,8 +7,6 @@ main();
 
 function main() {
 
-    const dataProcessURL = 'http://localhost:3000/processData';
-
     for (let i = 0; i < coll.length; i++)
     {
         coll[i].addEventListener('click', togglePanel);
@@ -63,8 +61,4 @@ function togglePanel() {
     } else {
         content.style.display = "block";
     }
-}
-
-function submitForm(){
-    console.log("submitForm has been called!");
 }
