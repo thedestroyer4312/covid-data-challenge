@@ -2,6 +2,18 @@
     background: aliceblue;
 }
 
+/* Removes Arrows for input=number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
 /* Overall top section of page */
 .topnav {
   overflow: hidden;

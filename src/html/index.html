@@ -15,13 +15,13 @@
       </div>
 
         <h1 id = "Title">COVID-19 Transmission Quiz</h1>
-        <form id = "userInput">
+        <form id = "userInput" method = "post">
 
 <button type="button" class="collapsible" id="personalInfo">Personal Information</button>
 <div class="content">
     <p>This section will ask you about XXXYYYZZZ</p>
                 <label for="Age">Enter your age:</label>
-                <input type="text" id="age" name="age" min="0" max="99"> <br>
+                <input type="number" id="age" name="age" min="1" max="99"> <br>
 
                 What is your sex?
                 <div>
@@ -84,6 +84,76 @@
 
 </div> <br>
 
+<!-- maybe make this part a form and use formData.namedItem? or getElementsbyName -->
+<button type="button" class="collapsible" id="visitedPlaces">Places visited/Activites done</button>
+<div class="content">
+    This section will ask you about places visited and activities performed within the last 2 weeks.<br>
+    Select all that apply. <br>
+
+    <p>Within the last 14 days I have ...</p>
+    <div>
+        <input type="checkbox" name="activities" value="concert" id="concert">
+        <label for="concert">Attended a large concert</label> <br>
+        <input type="checkbox" name="activities" value="religiousService" id="religiousService">
+        <label for="religiousService">Attended a large religious service (500+ people)</label> <br>
+        <input type="checkbox" name="activities" value="wedding" id="wedding">
+        <label for="wedding">Attended a wedding or funeral</label> <br>
+        <input type="checkbox" name="activities" value="amusPark" id="amusPark">
+        <label for="amusPark">Went to a theme/amusement park</label> <br>
+        <input type="checkbox" name="activities" value="movie" id="movie">
+        <label for="movie">Went to a movie theater</label> <br> <br>
+
+        <input type="checkbox" name="activities" value="eatBuffet" id="eatBuffet">
+        <label for="eatBuffet">Ate at a buffet</label> <br>
+        <input type="checkbox" name="activities" value="eatIn" id="eatIn">
+        <label for="eatIn">Ate indoors at a restaurant</label> <br>
+        <input type="checkbox" name="activities" value="eatOut" id="eatOut">
+        <label for="eatOut">Ate outdoor at a restaurant</label> <br>
+        <input type="checkbox" name="activities" value="takeout" id="takeout">
+        <label for="takeout">Got takeout</label> <br>
+        <input type="checkbox" name="activities" value="bar" id="bar">
+        <label for="bar">Went to a bar</label> <br>
+        <input type="checkbox" name="activities" value="bbq" id="bbq">
+        <label for="bbq">Went to a backyard barbeque</label> <br>
+        <input type="checkbox" name="activities" value="dinnerOther" id="dinnerOther">
+        <label for="dinnerOther">Had dinner at someone else's house</label> <br>
+        <input type="checkbox" name="activities" value="grocer" id="grocer">
+        <label for="grocer">Went grocery shopping</label> <br> <br>
+
+        <input type="checkbox" name="activities" value="walk" id="walk">
+        <label for="walk">Went for a walk, run or bike ride</label> <br>
+        <input type="checkbox" name="activities" value="gym" id="gym">
+        <label for="gym">Went to the gym</label> <br>
+        <input type="checkbox" name="activities" value="beach" id="beach">
+        <label for="beach">Went to the beach</label> <br>
+        <input type="checkbox" name="activities" value="salon" id="salon">
+        <label for="salon">Went to a hair salon/barbershop</label> <br>
+        <input type="checkbox" name="activities" value="library" id="library">
+        <label for="library">Went to the library</label> <br>
+        <input type="checkbox" name="activities" value="camping" id="camping">
+        <label for="camping">Went camping</label> <br>
+        <input type="checkbox" name="activities" value="swim" id="swim">
+        <label for="swim">Went swimming in a public pool</label> <br>
+        <input type="checkbox" name="activities" value="playground" id="playground">
+        <label for="playground">Spent at least an hour at a public playground</label> <br> <br>
+
+        <input type="checkbox" name="activities" value="plane" id="plane">
+        <label for="plane">Traveled by plane</label> <br>
+        <input type="checkbox" name="activities" value="downtown" id="downtown">
+        <label for="downtown">Walked through a busy downtown</label> <br>
+        <input type="checkbox" name="activities" value="mall" id="mall">
+        <label for="mall">Went shopping at a mall</label> <br>
+        <input type="checkbox" name="activities" value="daycare" id="daycare">
+        <label for="daycare">Sent kids to school, camp or daycare</label> <br>
+        <input type="checkbox" name="activities" value="hug" id="hug">
+        <label for="hug">Hug or shook hands with someone</label> <br>
+        <input type="checkbox" name="activities" value="doctor" id="doctor">
+        <label for="doctor">Sat in a doctor's waiting room</label> <br>
+
+    </div> <br>
+
+</div> <br>
+
 <button type="button" class="collapsible" id="Behavior">Behavior</button>
 <div class="content">
     <p>This section will ask you about your day to day behavior over the past 14 days</p>
@@ -135,10 +205,24 @@
         </div>
 
 </div> <br> <br>
-
-            <a href="./quizResult.html"><button type="button" id="submit">Submit</button></a>
+            <button type="button" id="submit">Submit</button></a>
             <button type="reset" id="reset">Reset</button>
         </form> <br>
+
+        Here is a detailed breakdown of how each of your choices affects your risk level. <br>
+
+        <strong>Age</strong> <br>
+        Your age is <span id="userAge"></span>, which has a risk level of <span id="userAgeR"></span> <br>
+        <strong>Sex</strong> <br>
+        Your sex is <span id="userSex"></span>, which has a risk level of <span id="userSexR"></span> <br>
+        <strong>Race</strong> <br>
+        Your race is <span id="userRace"></span>, which has a risk level of <span id="userRaceR"></span> <br>
+        <strong>Income</strong> <br>
+        Your income is <span id="userIncome"></span>, which has a risk level of <span id="userIncomeR"></span>
+        <br> <br>
+
+        <p>FORM RESPONSES GO HERE</p>
+        <p id="responsesHERE"></p>
     </body>
 
     <script src = "app.js"></script>
