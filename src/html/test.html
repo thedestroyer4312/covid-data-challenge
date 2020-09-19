@@ -11,11 +11,16 @@
   <p> some text goes here </p>
   </div>
   <form id="myForm">
-    <input type="text" id="myInput" onkeyup="jobLookup()" placeholder="Search for jobs...">
+    <!-- this is the search bar -->
+    <input type="text" id="searchInput" onkeyup="jobLookup()" placeholder="Search for jobs...">
+    <!-- This is where the dropdown of options goes-->
+    <select name="jobsGoHere" id="jobsGohere">
+    <!-- manipulate with innerHTML -->
 
-    <button type="button">Button</button>
-    
-  <script src="/search.js"></script>
+    </select>
+  <!-- install sheetJS -->
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script src="search.js"></script>
   </form>
   </body>
 </html>

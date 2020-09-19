@@ -1,6 +1,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const XLSX = require('xlsx');
+const fs = require('fs');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -41,6 +43,22 @@ app.post('/processData', function (request, response, next) {
     };
     response.header("Access-Control-Allow-Origin", "*");
     response.send(respJSON);
+});
+
+app.get('/getExcelFile', async function(request, response, next){
+    const filePath = '../../Cleaned Data/Job data.xlsx';
+
+    let workbook = await XLSX.readFile(filePath);
+    
+    // console.log(workbook);
+
+    // convert workbook to array of JSON objects
+    let JSONarray = await XLSX.utils.sheet_to_json(workbook.SheetNames['Sheet1']);
+
+    console.log(JSONarray);
+
+    response.header("Access-Control-Allow-Origin", "*");
+    response.send(JSON.stringify(JSONarray));
 });
 
 app.listen(port, () => {
