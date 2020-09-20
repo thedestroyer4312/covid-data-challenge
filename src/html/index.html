@@ -39,15 +39,15 @@
 
                 What is your race?
                 <div>
-                    <input type="checkbox" id="race_white" name="race" value="race_white">
+                    <input type="checkbox" id="race_white" name="race" value="white">
                         <label for="race_white">White</label> <br>
-                    <input type="checkbox" id="race_black" name="race" value="race_black">
+                    <input type="checkbox" id="race_black" name="race" value="black">
                         <label for="race_black">Black/African American</label> <br>
-                    <input type="checkbox" id="race_asian" name="race" value="race_asian">
+                    <input type="checkbox" id="race_asian" name="race" value="asian">
                         <label for="race_asian">Asian</label> <br>
-                    <input type="checkbox" id="race_indian_alaskaNative" name="race" value="race_indian_alaskaNative">
+                    <input type="checkbox" id="race_indian_alaskaNative" name="race" value="indian_alaskaNative">
                         <label for="race_indian_alaskaNative">American Indian/Alaskan Native</label> <br>
-                    <input type="checkbox" id="race_pacificIslander" name="contact" value="race_pacificIslander">
+                    <input type="checkbox" id="race_pacificIslander" name="race" value="pacificIslander">
                         <label for="race_pacificIslander">Native Hawaiian/Other Pacific Islander</label> <br>
                 </div> <br>
 
@@ -79,10 +79,11 @@
     <p>This section will ask you about household factors and living conditions</p>
 
         Where do you live? <br>
+				<!-- dropdown search bar goes here -->
 
-        How many people do you live with?
-
-</div> <br>
+        <label for="familySize">How many other people do you live with?</label>
+				<input type="text" id="familySize" name="familySize" min="0" max="99" required> <br>
+</div><br>
 
 <!-- maybe make this part a form and use formData.namedItem? or getElementsbyName -->
 <button type="button" class="collapsible" id="visitedPlaces">Places visited/Activites done</button>
