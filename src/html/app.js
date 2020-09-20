@@ -76,30 +76,3 @@ function togglePanel() {
         content.style.display = "block";
     }
 }
-/**
- * Collects the responses in the form and returns said data as a JSON object using JSON.stringify()
- */
-function getResponses(){
-
-}
-
-/**
- * Takes an input JSON string representing an object and sends it to the backend
- * Throws an exception for an undefined/null/NaN input
- */
-function processResponses(responses){
-  // check input
-  if(!responses || isNaN(responses)){
-    throw 'Parameter is null, NaN, or undefined';
-  }
-
-	// from here, send to the backend
-	fetch(`${baseURL}/processData`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-		body: JSON.stringify(responses),
-	})
-		.then(serverResponse => serverResponse.json());
-}
