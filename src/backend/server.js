@@ -16,7 +16,7 @@ const storage = new Storage({
 });
 
 app.post('/testReadFile', function (request, response) {
-    const file = storage.bucket('activity-risk').file('activityRiskJson.json');
+    const file = storage.bucket('processed_data-cv19dc').file('allDataJson.json');
     let buf = '';
     file.createReadStream()
         .on('data', (rawData) => {
@@ -24,30 +24,61 @@ app.post('/testReadFile', function (request, response) {
             buf = buf + rawData;
         })
         .on('end', () => {
-            //read the finished JSON file and calculate
-            let activityRiskFile = JSON.parse(buf);
+            let riskDataFile = JSON.parse(buf);
             let activityArr = request.body.activities;
             let riskLvl = 0;
+            //search through the JSON for each activity's risk level.
             for(let task of activityArr) {
-                riskLvl = riskLvl + activityRiskFile["activityRisk"][task];
+                riskLvl = riskLvl + (riskDataFile["activityRisk"][task] * 20);
             }
+            let avgRisk = 0;
+            if(activityArr.length > 0) avgRisk = (riskLvl/activityArr.length).toFixed(2);
+
+            //ageRisk
+            let ageRange = "";
+            let userAge = request.body.age;
+            if(userAge <= 4) ageRange = "0-4";
+            else if(userAge <= 17) ageRange = "5-17";
+            else if(userAge <= 29) ageRange = "18-29";
+            else if(userAge <= 39) ageRange = "30-39";
+            else if(userAge <= 49) ageRange = "40-49";
+            else if(userAge <= 64) ageRange = "50-64";
+            else if(userAge <= 74) ageRange = "65-74";
+            else if(userAge <= 84) ageRange = "75-84";
+            else ageRange = "85+"; //lmao find a better way to do this.
+            let ageRisk = riskDataFile["ageRisk"][ageRange];
+
+            ///////////TODO///////////
+            //sexRisk
+            //raceRisk
+            //incomeRisk
+            // locationRisk
+    		//familySize
+    		//activities
+    		//mask
+    		//handwash
+    		//socDist
+
+            //send back finished JSON.
+            let respJSON = {
+                age: request.body.age,
+                ageRisk: ageRisk,
+                sex: request.body.sex,
+                sexRisk: 0,
+                race: request.body.race,
+                raceRisk: 0,
+                income: request.body.income,
+                incomeRisk: 0,
+                activityRisk: riskLvl,
+                avgRisk: avgRisk
+            };
+            
             response.header("Access-Control-Allow-Origin", "*");
-            if(activityArr.length == 0) {
-                response.send({
-                    avgRisk: 0
-                });
-                return;
-            }
-            else {
-                response.send({
-                    avgRisk: riskLvl/(activityArr.length),
-                });
-            }
+            response.send(respJSON);
         })
         .on('error', () => {
             return console.log("ERROR");
         });
-
 });
 
 app.get('/', function (request, response) {
@@ -61,26 +92,6 @@ app.get('/getRandomNumber', function (request, response, next) {
     }
     response.header("Access-Control-Allow-Origin", "*");
     response.send(randomNum);
-});
-
-app.post('/processData', function (request, response, next) {
-    let age = request.body.age;
-    let sex = request.body.sex;
-    let race = request.body.race;
-    let income = request.body.income;
-
-    let respJSON = {
-        "age": age,
-        "ageRisk": Math.floor(Math.random() * 100),
-        "sex": sex,
-        "sexRisk": Math.floor(Math.random() * 100),
-        "race": race,
-        "raceRisk": Math.floor(Math.random() * 100),
-        "income": income,
-        "incomeRisk": Math.floor(Math.random() * 100)
-    };
-    response.header("Access-Control-Allow-Origin", "*");
-    response.send(respJSON);
 });
 
 app.listen(port, () => {

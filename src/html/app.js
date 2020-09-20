@@ -1,11 +1,10 @@
 const button = document.getElementById('submit');
-const graphSpace = document.querySelector(".graphsHere > p");
 const coll = document.getElementsByClassName("collapsible");
 const userForm = document.getElementById('userInput');
 
 // google cloud URL
 const baseURL = 'https://covid19-dc.wn.r.appspot.com';
-
+//'http://localhost:3000';
 main();
 
 /**
@@ -19,38 +18,32 @@ function main() {
     {
         coll[i].addEventListener('click', togglePanel);
     }
-
     button.addEventListener('click', printSurveyResponses);
-		// also, add an event listener for collecting responses
-	  button.addEventListener('click', getResponses);
+	// also, add an event listener for collecting responses
+	button.addEventListener('click', getResponses);
 }
+
 /*
  * Debugging function that takes the survey inputs and prints them at the bottom of the page at any given time
  */
 async function printSurveyResponses() {
-
-    let str = "";
     let formData = new FormData(userForm);
-    for(let pair of formData) { //stored as pairs, (name, value).
-        str = str + "<br>" + pair[0] + ', '+ pair[1];
-    }
-    document.getElementById('responsesHERE').innerHTML = str;
 
-//https://www.learnwithjason.dev/blog/get-form-values-as-json/
-        let userData = {
-            age: formData.get("age"),
-            sex: formData.get("sex"),
-            race: formData.getAll("race"),
-            income: formData.get("income"),
-						// location: formData.get("location"),
-					  familySize: formData.get("familySize"),	
-						activities: formData.getAll("activities"),
-						mask: formData.get("mask"),
-						handwash: formData.get("handwash"),
-						socDist: formData.get("socDist"),
-        };
-				
-        await fetch(`${baseURL}/processData`, {
+    let userData = {
+        age: formData.get("age"),
+        sex: formData.get("sex"),
+        race: formData.get("race"),
+        income: formData.get("income"),
+		// location: formData.get("location"),
+		familySize: formData.get("familySize"),
+		activities: formData.getAll("activities"),
+		mask: formData.get("mask"),
+		handwash: formData.get("handwash"),
+		socDist: formData.get("socDist"),
+    };
+
+    //debug //document.getElementById('responsesHERE').innerHTML = userData;
+        await fetch(`${baseURL}/testReadFile`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -60,7 +53,7 @@ async function printSurveyResponses() {
           .then(response => response.json())
           .then(data => {
               //print to website
-              document.getElementById('userAge').innerHTML = data["age:"]; //serverjs typo whoops
+              document.getElementById('userAge').innerHTML = data.age;
               document.getElementById('userAgeR').innerHTML = data.ageRisk;
               document.getElementById('userSex').innerHTML = data.sex;
               document.getElementById('userSexR').innerHTML = data.sexRisk;
@@ -68,6 +61,9 @@ async function printSurveyResponses() {
               document.getElementById('userRaceR').innerHTML = data.raceRisk;
               document.getElementById('userIncome').innerHTML = data.income;
               document.getElementById('userIncomeR').innerHTML = data.incomeRisk;
+
+              document.getElementById('totRiskLevel').innerHTML = data.activityRisk;
+              document.getElementById('avgRiskLevel').innerHTML = data.avgRisk;
           })
           .catch(error => console.log("API error"));
 }
@@ -95,8 +91,8 @@ function processResponses(responses){
   // check input
   if(!responses || isNaN(responses)){
     throw 'Parameter is null, NaN, or undefined';
-  } 
-  
+  }
+
 	// from here, send to the backend
 	fetch(`${baseURL}/processData`, {
 		method: 'POST',

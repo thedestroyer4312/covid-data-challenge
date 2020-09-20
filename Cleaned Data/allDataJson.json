@@ -1,0 +1,42 @@
+{
+  "activityRisk": {
+    "concert": 5,
+    "religiousService": 5,
+    "wedding": 4,
+    "eatBuffet": 5,
+    "eatIn": 4,
+    "eatOut": 2,
+    "takeout": 1,
+    "camping": 1,
+    "walk": 2,
+    "bbq": 2,
+    "bar": 5,
+    "beach": 3,
+    "salon": 4,
+    "amusPark": 5,
+    "library": 2,
+    "movie": 5,
+    "grocer": 2,
+    "dinnerOther": 3,
+    "hug": 4,
+    "daycare": 3,
+    "mall": 3,
+    "doctor": 2,
+    "playground": 2,
+    "swim": 3,
+    "plane": 4,
+    "downtown": 2,
+    "gym": 5
+  },
+  "ageRisk": {
+    "0-4": 7.48,
+    "5-17": 28.16,
+    "18-29": 99.88,
+    "30-39": 74.8,
+    "40-49": 68.64,
+    "50-64": 92.84,
+    "65-74": 33.88,
+    "75-84": 19.36,
+    "85+": 14.96
+  }
+}

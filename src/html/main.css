@@ -13,7 +13,6 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
-
 /* Overall top section of page */
 .topnav {
   overflow: hidden;
@@ -53,8 +52,10 @@ input[type=text]{
     outline: none;
 }
 
-#age {
-    width: 40px;
+input[type=number]{
+    background-color: white;
+    margin: 4px;
+    outline: none;
 }
 
 .collapsible {
@@ -87,7 +88,6 @@ input[type=text]{
   display: none;
   overflow: hidden;
 }
-
 
 button {
     text-align: center;
