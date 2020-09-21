@@ -121,15 +121,6 @@ app.get('/', function (request, response) {
     response.send('Hello there!');
 });
 
-app.get('/getRandomNumber', function (request, response, next) {
-
-    let randomNum = {
-        "number" : Math.floor(Math.random() * 100),
-    }
-    response.header("Access-Control-Allow-Origin", "*");
-    response.send(randomNum);
-});
-
 app.listen(port, () => {
   console.log(`Express server at http://localhost:${port}`);
 });

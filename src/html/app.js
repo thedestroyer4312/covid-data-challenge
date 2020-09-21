@@ -19,8 +19,6 @@ function main() {
         coll[i].addEventListener('click', togglePanel);
     }
     button.addEventListener('click', printSurveyResponses);
-	// also, add an event listener for collecting responses
-	button.addEventListener('click', getResponses);
 }
 
 /*
