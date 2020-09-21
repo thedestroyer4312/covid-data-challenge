@@ -51,6 +51,12 @@ async function printSurveyResponses() {
     .catch(error => console.log("API error"));
 }
 
+
+///////////////////////////////////////////////////
+
+//Special Thanks to W3 Schools for this tutorial//
+
+//////////////////////////////////////////////////
 let currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 
