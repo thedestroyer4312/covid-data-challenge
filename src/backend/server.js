@@ -105,7 +105,6 @@ app.post('/testReadFile', function (request, response) {
                 incomeRisk: 0,
                 location: request.body.location,
                 locationRisk: locationRisk,
-                activityRisk: riskLvl,
                 avgRisk: avgRisk
             };
 

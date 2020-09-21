@@ -1,238 +1,268 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="main.css">
-        <title>COVID19 Data Challenge Quiz</title>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>COVID19 Data Challenge Quiz</title>
+</head>
+<body>
 
-      <div class="topnav">
+    <div class="topnav">
         <a class="active" href="./index.html">Take the quiz</a>
         <a href="./moreInfo.html">More Info</a>
         <a href="./methods.html">Methods</a>
         <a href="./about.html">About Us</a>
-      </div>
+    </div>
 
-        <h1 id = "Title">COVID-19 Transmission Quiz</h1>
-        <form id = "userInput" method = "post">
+    <h1 id = "Title">COVID-19 Transmission Quiz</h1>
+    <form id = "userInput" method = "post">
 
-<button type="button" class="collapsible" id="personalInfo">Personal Information</button>
-<div class="content">
+        <!-- One "tab" for each step in the form: -->
+        <div class="tab"> <h2>Personal Information:</h2>
 
-        <label for="age">Enter your age:</label>
-        <input type="number" id="age" name="age" min="0" max="99" required> <br>
+            <p> <label for="age">Enter your age:</label>
+                <input type="number" id="age" name="age" min="0" max="99" required >
+            </p>
+            <p>What is your sex?
+                <div>
+                    <input type="radio" id="male" name="sex" value="male" required>
+                    <label for="male">Male</label>
+                </div>
+                <div>
+                    <input type="radio" id="female" name="sex" value="female" required>
+                    <label for="female">Female</label>
+                </div>
+                <div>
+                    <input type="radio" id="other" name="sex" value="other" required>
+                    <label for="other">Other</label>
+                </div> </p>
 
-        What is your sex?
-        <div>
-            <input type="radio" id="male" name="sex" value="male" required>
-            <label for="male">Male</label>
-        </div>
-        <div>
-            <input type="radio" id="female" name="sex" value="female" required>
-            <label for="female">Female</label>
-        </div>
-        <div>
-            <input type="radio" id="other" name="sex" value="other" required>
-            <label for="other">Other</label>
-        </div> <br>
+                <p>What is your race?
+                    <div>
+                        <input type="radio" id="race_white_hisp" name="race" value="white_hisp" required>
+                        <label for="race_white_hisp">White: Hispanic or Latino</label> <br>
+                        <input type="radio" id="race_white_nonHisp" name="race" value="white_nonHisp" required>
+                        <label for="race_white_nonHisp">White: Non-Hispanic</label> <br>
+                        <input type="radio" id="race_black" name="race" value="black" required>
+                        <label for="race_black">Black/African American</label> <br>
+                        <input type="radio" id="race_asian" name="race" value="asian" required>
+                        <label for="race_asian">Asian</label> <br>
+                        <input type="radio" id="race_indian_alaskaNative" name="race" value="indian_alaskaNative" required>
+                        <label for="race_indian_alaskaNative">American Indian/Alaskan Native</label> <br>
+                        <input type="radio" id="race_pacificIslander" name="race" value="pacificIslander" required>
+                        <label for="race_pacificIslander">Native Hawaiian/Other Pacific Islander</label> <br>
+                        <input type="radio" id="multiRace" name="race" value="multiRace" required>
+                        <label for="multiRace">Multiple Race</label> <br>
+                    </div> </p>
 
-        What is your race?
-        <div>
-            <input type="radio" id="race_white_hisp" name="race" value="white_hisp" required>
-                <label for="race_white_hisp">White: Hispanic or Latino</label> <br>
-            <input type="radio" id="race_white_nonHisp" name="race" value="white_nonHisp" required>
-                <label for="race_white_nonHisp">White: Non-Hispanic</label> <br>
-            <input type="radio" id="race_black" name="race" value="black" required>
-                <label for="race_black">Black/African American</label> <br>
-            <input type="radio" id="race_asian" name="race" value="asian" required>
-                <label for="race_asian">Asian</label> <br>
-            <input type="radio" id="race_indian_alaskaNative" name="race" value="indian_alaskaNative" required>
-                <label for="race_indian_alaskaNative">American Indian/Alaskan Native</label> <br>
-            <input type="radio" id="race_pacificIslander" name="race" value="pacificIslander" required>
-                <label for="race_pacificIslander">Native Hawaiian/Other Pacific Islander</label> <br>
-            <input type="radio" id="multiRace" name="race" value="multiRace" required>
-                <label for="multiRace">Multiple Race</label> <br>
-        </div> <br>
+                    <p>What is your income?
+                        <div>
+                            <input type="radio" id="income1" name="income" value="income1" required>
+                            <label for="income1">&lt;$15,000</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="income2" name="income" value="income2" required>
+                            <label for="income2">$15,000-$25,000</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="income3" name="income" value="income3" required>
+                            <label for="income3">$25,001-$35,000</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="income4" name="income" value="income4" required>
+                            <label for="income4">$35,000-$50,000</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="income5" name="income" value="income5" required>
+                            <label for="income5">$50,000+</label>
+                        </div></p>
 
-        What is your income?
-        <div>
-            <input type="radio" id="income1" name="income" value="income1" required>
-            <label for="income1">&lt;$15,000</label>
-        </div>
-        <div>
-            <input type="radio" id="income2" name="income" value="income2" required>
-            <label for="income2">$15,000-$25,000</label>
-        </div>
-        <div>
-            <input type="radio" id="income3" name="income" value="income3" required>
-            <label for="income3">$25,001-$35,000</label>
-        </div>
-        <div>
-            <input type="radio" id="income4" name="income" value="income4" required>
-            <label for="income4">$35,000-$50,000</label>
-        </div>
-        <div>
-            <input type="radio" id="income5" name="income" value="income5" required>
-            <label for="income5">$50,000+</label>
-        </div>
-</div> <br>
+                    </div>
 
-<button type="button" class="collapsible" id="FamilyInfo">Household & Location</button>
-<div class="content">
-    <p>This section will ask you about household factors and living conditions</p>
-        Where do you live? <br>
-				<!-- dropdown search bar goes here -->
+        <div class="tab"> <h2>Household and Location:</h2>
+                        <p>This section will ask you about household factors and living conditions</p>
+                        Where do you live? <br>
+                        <!-- dropdown search bar goes here -->
+                        <p><label for="familySize">How many other people do you live with?</label>
+                            <input type="number" id="familySize" name="familySize" min="0" max="99" required></p>
+                        </div>
 
-        <label for="familySize">How many other people do you live with?</label>
-				<input type="number" id="familySize" name="familySize" min="0" max="99" required> <br>
-</div><br>
+        <div class="tab"> <h2>Places visited/Activities Done:</h2>
+                            <p>This section will ask you about places visited and activities performed within the last 2 weeks.<br>
+                                Select all that apply.</p>
+                                <p>Within the last 14 days I have ...</p>
+                                <p><div>
+                                    <input type="checkbox" name="activities" value="concert" id="concert">
+                                    <label for="concert">Attended a large concert</label> <br>
+                                    <input type="checkbox" name="activities" value="religiousService" id="religiousService">
+                                    <label for="religiousService">Attended a large religious service (500+ people)</label> <br>
+                                    <input type="checkbox" name="activities" value="wedding" id="wedding">
+                                    <label for="wedding">Attended a wedding or funeral</label> <br>
+                                    <input type="checkbox" name="activities" value="amusPark" id="amusPark">
+                                    <label for="amusPark">Went to a theme/amusement park</label> <br>
+                                    <input type="checkbox" name="activities" value="movie" id="movie">
+                                    <label for="movie">Went to a movie theater</label> <br> <br>
 
-<!-- maybe make this part a form and use formData.namedItem? or getElementsbyName -->
-<button type="button" class="collapsible" id="visitedPlaces">Places visited/Activites done</button>
-<div class="content">
-    This section will ask you about places visited and activities performed within the last 2 weeks.<br>
-    Select all that apply. <br>
+                                    <input type="checkbox" name="activities" value="eatBuffet" id="eatBuffet">
+                                    <label for="eatBuffet">Ate at a buffet</label> <br>
+                                    <input type="checkbox" name="activities" value="eatIn" id="eatIn">
+                                    <label for="eatIn">Ate indoors at a restaurant</label> <br>
+                                    <input type="checkbox" name="activities" value="eatOut" id="eatOut">
+                                    <label for="eatOut">Ate outdoor at a restaurant</label> <br>
+                                    <input type="checkbox" name="activities" value="takeout" id="takeout">
+                                    <label for="takeout">Got takeout</label> <br>
+                                    <input type="checkbox" name="activities" value="bar" id="bar">
+                                    <label for="bar">Went to a bar</label> <br>
+                                    <input type="checkbox" name="activities" value="bbq" id="bbq">
+                                    <label for="bbq">Went to a backyard barbeque</label> <br>
+                                    <input type="checkbox" name="activities" value="dinnerOther" id="dinnerOther">
+                                    <label for="dinnerOther">Had dinner at someone else's house</label> <br>
+                                    <input type="checkbox" name="activities" value="grocer" id="grocer">
+                                    <label for="grocer">Went grocery shopping</label> <br>
+                                </div></p>
+                            </div>
 
-    <p>Within the last 14 days I have ...</p>
-    <div>
-        <input type="checkbox" name="activities" value="concert" id="concert">
-        <label for="concert">Attended a large concert</label> <br>
-        <input type="checkbox" name="activities" value="religiousService" id="religiousService">
-        <label for="religiousService">Attended a large religious service (500+ people)</label> <br>
-        <input type="checkbox" name="activities" value="wedding" id="wedding">
-        <label for="wedding">Attended a wedding or funeral</label> <br>
-        <input type="checkbox" name="activities" value="amusPark" id="amusPark">
-        <label for="amusPark">Went to a theme/amusement park</label> <br>
-        <input type="checkbox" name="activities" value="movie" id="movie">
-        <label for="movie">Went to a movie theater</label> <br> <br>
+        <div class="tab"> <h2>Places visited/Activities Done PT 2:</h2>
+                                <p>Select all that apply.</p>
+                                <p>Within the last 14 days I have ...</p>
+                                <p> <div>
+                                    <input type="checkbox" name="activities" value="walk" id="walk">
+                                    <label for="walk">Went for a walk, run or bike ride</label> <br>
+                                    <input type="checkbox" name="activities" value="gym" id="gym">
+                                    <label for="gym">Went to the gym</label> <br>
+                                    <input type="checkbox" name="activities" value="beach" id="beach">
+                                    <label for="beach">Went to the beach</label> <br>
+                                    <input type="checkbox" name="activities" value="salon" id="salon">
+                                    <label for="salon">Went to a hair salon/barbershop</label> <br>
+                                    <input type="checkbox" name="activities" value="library" id="library">
+                                    <label for="library">Went to the library</label> <br>
+                                    <input type="checkbox" name="activities" value="camping" id="camping">
+                                    <label for="camping">Went camping</label> <br>
+                                    <input type="checkbox" name="activities" value="swim" id="swim">
+                                    <label for="swim">Went swimming in a public pool</label> <br>
+                                    <input type="checkbox" name="activities" value="playground" id="playground">
+                                    <label for="playground">Spent at least an hour at a public playground</label> <br> <br>
 
-        <input type="checkbox" name="activities" value="eatBuffet" id="eatBuffet">
-        <label for="eatBuffet">Ate at a buffet</label> <br>
-        <input type="checkbox" name="activities" value="eatIn" id="eatIn">
-        <label for="eatIn">Ate indoors at a restaurant</label> <br>
-        <input type="checkbox" name="activities" value="eatOut" id="eatOut">
-        <label for="eatOut">Ate outdoor at a restaurant</label> <br>
-        <input type="checkbox" name="activities" value="takeout" id="takeout">
-        <label for="takeout">Got takeout</label> <br>
-        <input type="checkbox" name="activities" value="bar" id="bar">
-        <label for="bar">Went to a bar</label> <br>
-        <input type="checkbox" name="activities" value="bbq" id="bbq">
-        <label for="bbq">Went to a backyard barbeque</label> <br>
-        <input type="checkbox" name="activities" value="dinnerOther" id="dinnerOther">
-        <label for="dinnerOther">Had dinner at someone else's house</label> <br>
-        <input type="checkbox" name="activities" value="grocer" id="grocer">
-        <label for="grocer">Went grocery shopping</label> <br> <br>
+                                    <input type="checkbox" name="activities" value="plane" id="plane">
+                                    <label for="plane">Traveled by plane</label> <br>
+                                    <input type="checkbox" name="activities" value="downtown" id="downtown">
+                                    <label for="downtown">Walked through a busy downtown</label> <br>
+                                    <input type="checkbox" name="activities" value="mall" id="mall">
+                                    <label for="mall">Went shopping at a mall</label> <br>
+                                    <input type="checkbox" name="activities" value="daycare" id="daycare">
+                                    <label for="daycare">Sent kids to school, camp or daycare</label> <br>
+                                    <input type="checkbox" name="activities" value="hug" id="hug">
+                                    <label for="hug">Hug or shook hands with someone</label> <br>
+                                    <input type="checkbox" name="activities" value="doctor" id="doctor">
+                                    <label for="doctor">Sat in a doctor's waiting room</label> <br>
+                                </div> </p>
+                            </div>
 
-        <input type="checkbox" name="activities" value="walk" id="walk">
-        <label for="walk">Went for a walk, run or bike ride</label> <br>
-        <input type="checkbox" name="activities" value="gym" id="gym">
-        <label for="gym">Went to the gym</label> <br>
-        <input type="checkbox" name="activities" value="beach" id="beach">
-        <label for="beach">Went to the beach</label> <br>
-        <input type="checkbox" name="activities" value="salon" id="salon">
-        <label for="salon">Went to a hair salon/barbershop</label> <br>
-        <input type="checkbox" name="activities" value="library" id="library">
-        <label for="library">Went to the library</label> <br>
-        <input type="checkbox" name="activities" value="camping" id="camping">
-        <label for="camping">Went camping</label> <br>
-        <input type="checkbox" name="activities" value="swim" id="swim">
-        <label for="swim">Went swimming in a public pool</label> <br>
-        <input type="checkbox" name="activities" value="playground" id="playground">
-        <label for="playground">Spent at least an hour at a public playground</label> <br> <br>
+        <div class="tab"> <h2>Jobs:</h2>
 
-        <input type="checkbox" name="activities" value="plane" id="plane">
-        <label for="plane">Traveled by plane</label> <br>
-        <input type="checkbox" name="activities" value="downtown" id="downtown">
-        <label for="downtown">Walked through a busy downtown</label> <br>
-        <input type="checkbox" name="activities" value="mall" id="mall">
-        <label for="mall">Went shopping at a mall</label> <br>
-        <input type="checkbox" name="activities" value="daycare" id="daycare">
-        <label for="daycare">Sent kids to school, camp or daycare</label> <br>
-        <input type="checkbox" name="activities" value="hug" id="hug">
-        <label for="hug">Hug or shook hands with someone</label> <br>
-        <input type="checkbox" name="activities" value="doctor" id="doctor">
-        <label for="doctor">Sat in a doctor's waiting room</label> <br>
+                                <p>Do you work in any of these jobs? If not, select "Other", even if you are unemployed, a student, or dead.</p>
+                            </div>
 
-    </div> <br>
+        <div class="tab"> <h2>Behavior:</h2>
+                                <p>This section will ask you about your day to day behavior over the past 14 days</p>
+                                <p>Which one of these best describes your mask habits?
+                                    <div>
+                                        <input type="radio" id="mask1" name="mask" value="mask1" required>
+                                        <label for="mask1">I always wear a mask when I leave the house, and never take it off</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="mask2" name="mask" value="mask2" required>
+                                        <label for="mask2">I only wear my mask when I'm indoors or around people</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="mask3" name="mask" value="mask3" required>
+                                        <label for="mask3">I sometimes wear a mask</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="mask4" name="mask" value="mask4" required>
+                                        <label for="mask4">I never wear a mask</label>
+                                    </div> <br>
 
-</div> <br>
+                                    How often do you wash your hands?
+                                    <div>
+                                        <input type="radio" id="handwash1" name="handwash" value="handwash1" required>
+                                        <label for="handwash1">Very frequently</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="handwash2" name="handwash" value="handwash2" required>
+                                        <label for="handwash2">Sometimes</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="handwash3" name="handwash" value="handwash3" required>
+                                        <label for="handwash3">Not very frequently</label>
+                                    </div> <br>
 
-<button type="button" class="collapsible" id="Behavior">Behavior</button>
-<div class="content">
-    <p>This section will ask you about your day to day behavior over the past 14 days</p>
+                                    How often do you adhere to social distancing? <!-- change to distance -->
+                                    <div>
+                                        <input type="radio" id="socDist1" name="socDist" value="socDist1" required>
+                                        <label for="socDist1">1m - 3ft</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="socDist2" name="socDist" value="socDist2" required>
+                                        <label for="socDist2">2m - 6ft</label>
+                                    </div>
+                                    <div>
+                                        <input type="radio" id="socDist3" name="socDist" value="socDist3" required>
+                                        <label for="socDist3">As far away as possible, I hate people</label>
+                                    </div> </p>
+                                </div>
 
-        Which one of these best describes your mask habits?
-        <div>
-            <input type="radio" id="mask1" name="mask" value="mask1" required>
-            <label for="mask1">I always wear a mask when I leave the house, and never take it off</label>
-        </div>
-        <div>
-            <input type="radio" id="mask2" name="mask" value="mask2" required>
-            <label for="mask2">I only wear my mask when I'm indoors or around people</label>
-        </div>
-        <div>
-            <input type="radio" id="mask3" name="mask" value="mask3" required>
-            <label for="mask3">I sometimes wear a mask</label>
-        </div>
-        <div>
-            <input type="radio" id="mask4" name="mask" value="mask4" required>
-            <label for="mask4">I never wear a mask</label>
-        </div> <br>
+        <div class="tab"> <h2>Results:</h2>
+                                    <p>Here is a detailed breakdown of how each of your choices affects your risk level.</p>
 
-        How often do you wash your hands?
-        <div>
-            <input type="radio" id="handwash1" name="handwash" value="handwash1" required>
-            <label for="handwash1">Very frequently</label>
-        </div>
-        <div>
-            <input type="radio" id="handwash2" name="handwash" value="handwash2" required>
-            <label for="handwash2">Sometimes</label>
-        </div>
-        <div>
-            <input type="radio" id="handwash3" name="handwash" value="handwash3" required>
-            <label for="handwash3">Not very frequently</label>
-        </div> <br>
+                                    <strong>Age</strong> <br>
+                                    Your age is <span id="userAge"></span>, which has a risk level of <span id="userAgeR"></span> <br>
+                                    <strong>Sex</strong> <br>
+                                    Your sex is <span id="userSex"></span>, which has a risk level of <span id="userSexR"></span> <br>
+                                    <strong>Race</strong> <br>
+                                    Your race is <span id="userRace"></span>, which has a risk level of <span id="userRaceR"></span> <br>
+                                    <strong>Income</strong> <br>
+                                    Your income is <span id="userIncome"></span>, which has a risk level of <span id="userIncomeR"></span> <br>
+                                    <strong>Location</strong> <br>
+                                    You live in <span id="userLocation"></span>, which has a risk level of <span id="userLocationR"></span> <br>
+                                    <strong>Number of people</strong> <br>
+                                    You live with <span id="userFamily"></span> other people, which has a risk level of <span id="userFamilyR"></span> <br>
+                                    <strong>Job</strong> <br>
+                                    You said your job is <span id="userJob"></span>, which has a risk level of <span id="userJobR"></span> <br> <br>
 
-        How often do you adhere to social distancing?
-        <div>
-            <input type="radio" id="socDist1" name="socDist" value="socDist1" required>
-            <label for="socDist1">Very often</label>
-        </div>
-        <div>
-            <input type="radio" id="socDist2" name="socDist" value="socDist2" required>
-            <label for="socDist2">Sometimes</label>
-        </div>
-        <div>
-            <input type="radio" id="socDist3" name="socDist" value="socDist3" required>
-            <label for="socDist3">Never</label>
-        </div>
+                                    Your average risk level from activities is <span id = "avgRiskLevel"></span> <br> <br>
 
-</div> <br> <br>
-            <button type="submit" id="submit">Submit</button></a>
-            <button type="reset" id="reset">Reset</button>
-        </form> <br>
+                                    <strong>Mask habit</strong> <br>
+                                    You said your mask habit is <span id="userMask"></span>, which has a risk level of <span id="userMaskR"></span> <br>
+                                    <strong>Social Distancing</strong> <br>
+                                    You said you maintain an average distance of <span id="userSocDist"></span> from others, which has a risk level of <span id="userSocDistR"></span> <br>
+                                </div>
 
-        <strong>NOTE:</strong> The information provided through this website is not medical advice; it
-        cannot and should not be used to diagnose, treat, cure, or prevent any disease. <br>
-        Please consult a doctor or other medical professional for actual health advice.
-        <br> <br>
-        Here is a detailed breakdown of how each of your choices affects your risk level. <br>
+        <div style="overflow:auto;">
+                                    <div style="float:right;">
+                                        <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                        <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                                    </div>
+                                </div>
 
-        <strong>Age</strong> <br>
-        Your age is <span id="userAge"></span>, which has a risk level of <span id="userAgeR"></span> <br>
-        <strong>Sex</strong> <br>
-        Your sex is <span id="userSex"></span>, which has a risk level of <span id="userSexR"></span> <br>
-        <strong>Race</strong> <br>
-        Your race is <span id="userRace"></span>, which has a risk level of <span id="userRaceR"></span> <br>
-        <strong>Income</strong> <br>
-        Your income is <span id="userIncome"></span>, which has a risk level of <span id="userIncomeR"></span> <br>
-        Your total risk level from activities is <span id = "totRiskLevel"></span> <br>
-        Your average risk level from activities is <span id = "avgRiskLevel"></span> <br>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:25px;">
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                    <span class="step"></span>
+                                </div>
 
+    </form> <br>
+    <p><strong>NOTE:</strong>
+    The information provided through this website is not medical advice; it
+    cannot and should not be used to diagnose, treat, cure, or prevent any disease. <br>
+    Please consult a doctor or other medical professional for actual health advice.</p>
     </body>
-
-    <script src = "app.js"></script>
-    <noscript>Please turn on JavaScript!</noscript>
+<script src = "app.js"></script>
+<noscript>Please turn on JavaScript!</noscript>
 </html>
