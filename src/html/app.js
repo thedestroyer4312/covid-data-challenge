@@ -3,8 +3,8 @@ const coll = document.getElementsByClassName("collapsible");
 const userForm = document.getElementById('userInput');
 
 // google cloud URL
-const baseURL = 'https://covid19-dc.wn.r.appspot.com';
-//'http://localhost:3000';
+//const baseURL = 'https://covid19-dc.wn.r.appspot.com';
+const baseURL = 'http://localhost:3000'; //for testing
 main();
 
 /**
@@ -34,6 +34,7 @@ async function printSurveyResponses() {
         sex: formData.get("sex"),
         race: formData.get("race"),
         income: formData.get("income"),
+        location: 'US-CA', //or in the form MX-BC //this is a placeholder
 		// location: formData.get("location"),
 		familySize: formData.get("familySize"),
 		activities: formData.getAll("activities"),
@@ -53,6 +54,7 @@ async function printSurveyResponses() {
           .then(response => response.json())
           .then(data => {
               //print to website
+              console.log(data);
               document.getElementById('userAge').innerHTML = data.age;
               document.getElementById('userAgeR').innerHTML = data.ageRisk;
               document.getElementById('userSex').innerHTML = data.sex;

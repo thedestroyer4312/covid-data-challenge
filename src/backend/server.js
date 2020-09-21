@@ -37,40 +37,40 @@ app.post('/testReadFile', function (request, response) {
             //ageRisk
             let ageRange = "";
             let userAge = request.body.age;
-						
-						// Trevor's alternative: iterate through an array of age upper boundaries to find the age range
-						let ageRanges = [4, 17, 29, 39, 49, 64, 74, 84];
-						let lowerAge = null, upperAge = null;
-						
-						/*
-						 * Iterate through the array of age ranges until we find the minimal age greater than our user age
-						 * i.e. the upper age boundary for our user. Then, set our upper age boundary variable to said boundary.
-						 * For each iteration of the loop that this is not true, the lower age is set to the current.
-						 * So, when the loop terminates, the lower age will be the previous, and the upper will be the next,
-						 * creating the minimal interval for our age.
-						 * Edge cases:
-						 *		1. Age 0-4: The if statement will trigger on the first iteration,  and lowerAge will be left null
-						 *		2. Age 85+: The if statement will never trigger, so upperAge will be left null
-						 */
-						for(let upperAgeBoundary of ageRanges){
-								if(userAge <= upperAgeBoundary){
-										upperAge = upperAgeBoundary;
-										break;
-								}
-								lowerAge = upperAgeBoundary;
-						}
 
-						// now, calculate our age based on our range
-						// first, the edge case for 0-4 years old
-						if(!lowerAge){
-								ageRange = "0-4";
-						}else if(!upperAge){ // second edge case: over 85 years old
-								ageRange = "85+";
-						}else{
-								ageRange = `${lowerAge + 1}-${upperAge}`;
-						}
-						
-						/*
+			// Trevor's alternative: iterate through an array of age upper boundaries to find the age range
+			let ageRanges = [4, 17, 29, 39, 49, 64, 74, 84];
+			let lowerAge = null, upperAge = null;
+
+			/*
+			 * Iterate through the array of age ranges until we find the minimal age greater than our user age
+			 * i.e. the upper age boundary for our user. Then, set our upper age boundary variable to said boundary.
+			 * For each iteration of the loop that this is not true, the lower age is set to the current.
+			 * So, when the loop terminates, the lower age will be the previous, and the upper will be the next,
+			 * creating the minimal interval for our age.
+			 * Edge cases:
+			 *		1. Age 0-4: The if statement will trigger on the first iteration,  and lowerAge will be left null
+			 *		2. Age 85+: The if statement will never trigger, so upperAge will be left null
+			 */
+			for(let upperAgeBoundary of ageRanges){
+				if(userAge <= upperAgeBoundary){
+					upperAge = upperAgeBoundary;
+					break;
+			    }
+				lowerAge = upperAgeBoundary;
+			}
+
+			// now, calculate our age based on our range
+			// first, the edge case for 0-4 years old
+			if(!lowerAge){
+			    ageRange = "0-4";
+			}else if(!upperAge) { // second edge case: over 85 years old
+				ageRange = "85+";
+			}else {
+				ageRange = `${lowerAge + 1}-${upperAge}`;
+			}
+
+			/*
             if(userAge <= 4) ageRange = "0-4";
             else if(userAge <= 17) ageRange = "5-17";
             else if(userAge <= 29) ageRange = "18-29";
@@ -80,16 +80,15 @@ app.post('/testReadFile', function (request, response) {
             else if(userAge <= 74) ageRange = "65-74";
             else if(userAge <= 84) ageRange = "75-84";
             else ageRange = "85+"; //lmao find a better way to do this.
-						*/
+			*/
             let ageRisk = riskDataFile["ageRisk"][ageRange];
+            let locationRisk = riskDataFile["locationRisk"][request.body.location];
 
             ///////////TODO///////////
             //sexRisk
             //raceRisk
             //incomeRisk
-            // locationRisk
     		//familySize
-    		//activities
     		//mask
     		//handwash
     		//socDist
@@ -104,10 +103,12 @@ app.post('/testReadFile', function (request, response) {
                 raceRisk: 0,
                 income: request.body.income,
                 incomeRisk: 0,
+                location: request.body.location,
+                locationRisk: locationRisk,
                 activityRisk: riskLvl,
                 avgRisk: avgRisk
             };
-            
+
             response.header("Access-Control-Allow-Origin", "*");
             response.send(respJSON);
         })
