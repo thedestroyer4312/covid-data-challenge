@@ -83,8 +83,14 @@
 
         <div class="tab"> <h2>Household and Location:</h2>
             <p>This section will ask you about household factors and living conditions</p>
-            Where do you live? <br>
-            <!-- dropdown search bar goes here -->
+            <label for="location"> Where do you live?</label>
+                 <!-- dropdown search bar goes here -->
+                 <!-- note that the required attribute can only be put on input, select, textarea -->
+                <input type="text" name="location" list="locationList" required>
+                <datalist id="locationList">
+                     <option value="US-CA">
+                     <option value="MX-BC">
+                 </datalist>
             <p><label for="familySize">How many other people do you live with?</label>
                 <input type="number" id="familySize" name="familySize" min="0" max="99" required></p>
             </div>
@@ -161,7 +167,43 @@
         </div>
 
         <div class="tab"> <h2>Jobs:</h2>
-            <p>Do you work in any of these jobs? If not, select "Other", even if you are unemployed, a student, or dead.</p>
+            <p><label for="job">Do you work in any of these jobs? If not, select "Other", even if you are unemployed, a student, or dead.</p></label>
+				<div>
+				<input type="radio" id="job1" name="job" value="dental" required>
+				<label for="job1">Dental Job</label><br>
+				<input type="radio" id="job2" name="job" value="physician" required>
+				<label for="job2">Physician</label><br>
+				<input type="radio" id="job3" name="job" value="therapist" required>
+				<label for="job3">Therapist</label><br>
+				<input type="radio" id="job4" name="job" value="surgeon" required>
+				<label for="job4">Surgeon</label><br>
+				<input type="radio" id="job5" name="job" value="hospital_worker" required>
+				<label for="job5">Doctor/Hospital Worker</label><br>
+				<input type="radio" id="job6" name="job" value="nurse" required>
+				<label for="job6">Nurse</label><br>
+				<input type="radio" id="job7" name="job" value="technologist" required>
+				<label for="job7">Technologist</label><br>
+				<input type="radio" id="job8" name="job" value="acupuncturist" required>
+				<label for="job8">Acupuncturist</label><br>
+				<input type="radio" id="job9" name="job" value="lab_technician" required>
+				<label for="job9">Lab Technician</label><br>
+				<input type="radio" id="job10" name="job" value="airport" required>
+				<label for="job10">Flight/Airport Job</label><br>
+			    <input type="radio" id="job11" name="job" value="chiropractor" required>
+				<label for="job11">Chiropractor</label><br>
+				<input type="radio" id="job12" name="job" value="vet_worker" required>
+				<label for="job12">Vet Workers</label><br>
+				<input type="radio" id="job13" name="job" value="paramedic" required>
+				<label for="job13">Paramedic</label><br>
+				<input type="radio" id="job14" name="job" value="trainer" required>
+				<label for="job14">Trainer</label><br>
+				<input type="radio" id="job15" name="job" value="school_worker" required>
+				<label for="job15">Teacher/School Worker</label><br>
+				<input type="radio" id="job16" name="job" value="comsetician" required>
+				<label for="job16">Salon/Cosmetician</label><br>
+				<input type="radio" id="job17" name="job" value="other" required>
+				<label for="job17">Other</label><br>
+				</div>
         </div>
 
         <div class="tab"> <h2>Behavior:</h2>

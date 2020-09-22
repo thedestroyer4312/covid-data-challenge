@@ -16,18 +16,16 @@ async function printSurveyResponses() {
         sex: formData.get("sex"),
         race: formData.get("race"),
         income: formData.get("income"),
-        location: 'US-CA', //or in the form MX-BC //this is a placeholder
-        // location: formData.get("location"),
+        location: formData.get("location"),
         familySize: formData.get("familySize"),
-        //job: JOB HERE,
-        job: 'dentist',
+        job: formData.get("job"),
         activities: formData.getAll("activities"),
         mask: formData.get("mask"),
         handwash: formData.get("handwash"), //only if theres data.
         socDist: formData.get("socDist"),
     };
-
-    //debug //document.getElementById('responsesHERE').innerHTML = userData;
+    
+    //debug console.log(userData);
     await fetch(`${baseURL}/testReadFile`, {
         method: 'POST',
         headers: {
