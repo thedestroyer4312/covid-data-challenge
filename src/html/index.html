@@ -124,7 +124,7 @@
                 </div></p>
         </div>
 
-        <div class="tab"> <h2>Places visited/Activities Done PT 2:</h2>
+        <div class="tab"> <h2>Places visited/Activities Done Part 2:</h2>
             <p>Select all that apply.</p>
             <p>Within the last 14 days I have ...</p>
             <p> <div>
@@ -200,6 +200,10 @@
 
             How often do you adhere to social distancing? <!-- change to distance -->
             <div>
+                <input type="radio" id="socDist0" name="socDist" value="socDist0">
+                <label for="socDist0">I don't social distance</label>
+            </div>
+            <div>
                 <input type="radio" id="socDist1" name="socDist" value="socDist1" required>
                 <label for="socDist1">1m - 3ft</label>
             </div>
@@ -217,26 +221,26 @@
             <p>Here is a detailed breakdown of how each of your choices affects your risk level.</p>
 
             <strong>Age</strong> <br>
-            Your age is <span id="userAge"></span>, which has a risk level of <span id="userAgeR"></span> <br>
+            Your age is <span id="ageUser"></span>, which has a risk level of <span id="ageRiskUser"></span> <br>
             <strong>Sex</strong> <br>
-            Your sex is <span id="userSex"></span>, which has a risk level of <span id="userSexR"></span> <br>
+            Your sex is <span id="sexUser"></span>, which has a risk level of <span id="sexRiskUser"></span> <br>
             <strong>Race</strong> <br>
-            Your race is <span id="userRace"></span>, which has a risk level of <span id="userRaceR"></span> <br>
+            Your race is <span id="raceUser"></span>, which has a risk level of <span id="raceRiskUser"></span> <br>
             <strong>Income</strong> <br>
-            Your income is <span id="userIncome"></span>, which has a risk level of <span id="userIncomeR"></span> <br>
+            Your income is <span id="incomeUser"></span>, which has a risk level of <span id="incomeRiskUser"></span> <br>
             <strong>Location</strong> <br>
-            You live in <span id="userLocation"></span>, which has a risk level of <span id="userLocationR"></span> <br>
-            <strong>Number of people</strong> <br>
-            You live with <span id="userFamily"></span> other people, which has a risk level of <span id="userFamilyR"></span> <br>
+            You live in <span id="locationUser"></span>, which has a risk level of <span id="locationRiskUser"></span> <br>
+            <strong>Family size</strong> <br>
+            You live with <span id="familySizeUser"></span> other people, which has a risk level of <span id="familySizeRiskUser"></span> <br>
             <strong>Job</strong> <br>
-            You said your job is <span id="userJob"></span>, which has a risk level of <span id="userJobR"></span> <br> <br>
-
-            Your average risk level from activities is <span id = "avgRiskLevel"></span> <br> <br>
+            You said your job is <span id="jobUser"></span>, which has a risk level of <span id="jobRiskUser"></span> <br> <br>
+            <strong>Activity Risk</strong> <br>
+            Your average risk level from activities is <span id = "avgRiskUser"></span> <br> <br>
 
             <strong>Mask habit</strong> <br>
-            You said your mask habit is <span id="userMask"></span>, which has a risk level of <span id="userMaskR"></span> <br>
+            You said your mask habit is <span id="maskUser"></span>, which has a risk level of <span id="maskRiskUser"></span> <br>
             <strong>Social Distancing</strong> <br>
-            You said you maintain an average distance of <span id="userSocDist"></span> from others, which has a risk level of <span id="userSocDistR"></span> <br>
+            You said you maintain an average distance of <span id="socDistUser"></span> from others, which has a risk level of <span id="socDistRiskUser"></span> <br>
         </div>
 
         <div style="overflow:auto;">

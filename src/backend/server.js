@@ -61,8 +61,7 @@ app.post('/testReadFile', function (request, response) {
 			}
 
 			// now, calculate our age based on our range
-			// first, the edge case for 0-4 years old
-			if(!lowerAge){
+			if(!lowerAge){ 	// first, the edge case for 0-4 years old
 			    ageRange = "0-4";
 			}else if(!upperAge) { // second edge case: over 85 years old
 				ageRange = "85+";
@@ -70,44 +69,32 @@ app.post('/testReadFile', function (request, response) {
 				ageRange = `${lowerAge + 1}-${upperAge}`;
 			}
 
-			/*
-            if(userAge <= 4) ageRange = "0-4";
-            else if(userAge <= 17) ageRange = "5-17";
-            else if(userAge <= 29) ageRange = "18-29";
-            else if(userAge <= 39) ageRange = "30-39";
-            else if(userAge <= 49) ageRange = "40-49";
-            else if(userAge <= 64) ageRange = "50-64";
-            else if(userAge <= 74) ageRange = "65-74";
-            else if(userAge <= 84) ageRange = "75-84";
-            else ageRange = "85+"; //lmao find a better way to do this.
-			*/
             let ageRisk = riskDataFile["ageRisk"][ageRange];
             let locationRisk = riskDataFile["locationRisk"][request.body.location];
 
-            ///////////TODO///////////
-            //sexRisk
-            //raceRisk
-            //incomeRisk
-    		//familySize
-    		//mask
-    		//handwash
-    		//socDist
-
             //send back finished JSON.
+            //we send the user responses back because we want to format them.
             let respJSON = {
                 age: request.body.age,
                 ageRisk: ageRisk,
                 sex: request.body.sex,
-                sexRisk: 0,
-                race: request.body.race,
-                raceRisk: 0,
-                income: request.body.income,
-                incomeRisk: 0,
-                location: request.body.location,
+                sexRisk: -1,
+                race: request.body.race, //format this
+                raceRisk: -1,
+                income: request.body.income, //format this
+                incomeRisk: -1,
+                location: request.body.location, //maybe???
                 locationRisk: locationRisk,
-                avgRisk: avgRisk
+                familySize: request.body.familySize,
+                familySizeRisk: -1,
+                job: request.body.job,
+                jobRisk: -1,
+                avgRisk: avgRisk,
+                mask: request.body.mask, //format
+                maskRisk: -1,
+                socDist: request.body.socDist, //format
+                socDistRisk: -1,
             };
-
             response.header("Access-Control-Allow-Origin", "*");
             response.send(respJSON);
         })

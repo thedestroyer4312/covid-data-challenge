@@ -2,8 +2,8 @@ const button = document.getElementById('submit');
 const userForm = document.getElementById('userInput');
 
 // google cloud URL
-//const baseURL = 'https://covid19-dc.wn.r.appspot.com';
-const baseURL = 'http://localhost:3000'; //for testing
+const baseURL = 'https://covid19-dc.wn.r.appspot.com';
+//const baseURL = 'http://localhost:3000'; //for testing
 
 /*
 * Debugging function that takes the survey inputs and prints them at the bottom of the page at any given time
@@ -19,9 +19,11 @@ async function printSurveyResponses() {
         location: 'US-CA', //or in the form MX-BC //this is a placeholder
         // location: formData.get("location"),
         familySize: formData.get("familySize"),
+        //job: JOB HERE,
+        job: 'dentist',
         activities: formData.getAll("activities"),
         mask: formData.get("mask"),
-        handwash: formData.get("handwash"),
+        handwash: formData.get("handwash"), //only if theres data.
         socDist: formData.get("socDist"),
     };
 
@@ -37,16 +39,10 @@ async function printSurveyResponses() {
     .then(data => {
         //print to website
         console.log(data);
-        document.getElementById('userAge').innerHTML = data.age;
-        document.getElementById('userAgeR').innerHTML = data.ageRisk;
-        document.getElementById('userSex').innerHTML = data.sex;
-        document.getElementById('userSexR').innerHTML = data.sexRisk;
-        document.getElementById('userRace').innerHTML = data.race;
-        document.getElementById('userRaceR').innerHTML = data.raceRisk;
-        document.getElementById('userIncome').innerHTML = data.income;
-        document.getElementById('userIncomeR').innerHTML = data.incomeRisk;
-
-        document.getElementById('avgRiskLevel').innerHTML = data.avgRisk;
+        for (let key of Object.keys(data)) { //dynamically display results.
+            let id = key + "User";
+            document.getElementById(id).innerHTML = data[key];
+        }
     })
     .catch(error => console.log("API error"));
 }
@@ -82,7 +78,7 @@ function showTab(n) {
         document.getElementById("nextBtn").innerHTML = "Retake";
     }
     // ... and run a function that displays the correct step indicator:
-    fixStepIndicator(n)
+    fixStepIndicator(n);
 }
 
 function nextPrev(n) {
