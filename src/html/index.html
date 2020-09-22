@@ -59,23 +59,23 @@
 
                     <p>What is your income?
                         <div>
-                            <input type="radio" id="income1" name="income" value="income1" required>
+                            <input type="radio" id="income1" name="income" value="income0" required>
                             <label for="income1">&lt;$15,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income2" name="income" value="income2" required>
+                            <input type="radio" id="income2" name="income" value="income1" required>
                             <label for="income2">$15,000-$25,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income3" name="income" value="income3" required>
+                            <input type="radio" id="income3" name="income" value="income2" required>
                             <label for="income3">$25,001-$35,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income4" name="income" value="income4" required>
+                            <input type="radio" id="income4" name="income" value="income3" required>
                             <label for="income4">$35,000-$50,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income5" name="income" value="income5" required>
+                            <input type="radio" id="income5" name="income" value="income4" required>
                             <label for="income5">$50,000+</label>
                         </div></p>
 
@@ -168,7 +168,7 @@
 
         <div class="tab"> <h2>Jobs:</h2>
             <p><label for="job">Do you work in any of these jobs? If not, select "Other", even if you are unemployed, a student, or dead.</p></label>
-				<div>
+			<div>
 				<input type="radio" id="job1" name="job" value="dental" required>
 				<label for="job1">Dental Job</label><br>
 				<input type="radio" id="job2" name="job" value="physician" required>
@@ -177,52 +177,60 @@
 				<label for="job3">Therapist</label><br>
 				<input type="radio" id="job4" name="job" value="surgeon" required>
 				<label for="job4">Surgeon</label><br>
-				<input type="radio" id="job5" name="job" value="hospital_worker" required>
-				<label for="job5">Doctor/Hospital Worker</label><br>
-				<input type="radio" id="job6" name="job" value="nurse" required>
-				<label for="job6">Nurse</label><br>
-				<input type="radio" id="job7" name="job" value="technologist" required>
-				<label for="job7">Technologist</label><br>
-				<input type="radio" id="job8" name="job" value="acupuncturist" required>
-				<label for="job8">Acupuncturist</label><br>
-				<input type="radio" id="job9" name="job" value="lab_technician" required>
-				<label for="job9">Lab Technician</label><br>
-				<input type="radio" id="job10" name="job" value="airport" required>
-				<label for="job10">Flight/Airport Job</label><br>
-			    <input type="radio" id="job11" name="job" value="chiropractor" required>
-				<label for="job11">Chiropractor</label><br>
-				<input type="radio" id="job12" name="job" value="vet_worker" required>
-				<label for="job12">Vet Workers</label><br>
-				<input type="radio" id="job13" name="job" value="paramedic" required>
-				<label for="job13">Paramedic</label><br>
-				<input type="radio" id="job14" name="job" value="trainer" required>
-				<label for="job14">Trainer</label><br>
-				<input type="radio" id="job15" name="job" value="school_worker" required>
-				<label for="job15">Teacher/School Worker</label><br>
-				<input type="radio" id="job16" name="job" value="comsetician" required>
-				<label for="job16">Salon/Cosmetician</label><br>
-				<input type="radio" id="job17" name="job" value="other" required>
-				<label for="job17">Other</label><br>
+				<input type="radio" id="job5" name="job" value="nurse" required>
+				<label for="job5">Nurse</label><br>
+				<input type="radio" id="job6" name="job" value="technologist" required>
+				<label for="job6">Medical Technologist</label><br>
+				<input type="radio" id="job7" name="job" value="acupuncturist" required>
+				<label for="job7">Acupuncturist</label><br>
+                <input type="radio" id="job8" name="job" value="chiropractor" required>
+                <label for="job8">Chiropractor</label><br>
+                <input type="radio" id="job9" name="job" value="paramedic" required>
+                <label for="job9">Paramedic</label><br>
+                <input type="radio" id="job10" name="job" value="vet_worker" required>
+                <label for="job10">Vet Workers/Veternarians</label><br>
+                <input type="radio" id="job11" name="job" value="hospital_worker" required>
+                <label for="job11">Other Doctor/Hospital Worker</label><br>
+                <input type="radio" id="job12" name="job" value="taxi" required>
+                <label for="job12">Taxi/Rideshare Driver</label><br>
+                <input type="radio" id="job13" name="job" value="airport" required>
+                <label for="job13">Flight/Airport Job</label><br>
+				<input type="radio" id="job14" name="job" value="lab_technician" required>
+				<label for="job14">Lab Technician</label><br>
+				<input type="radio" id="job15" name="job" value="trainer" required>
+				<label for="job15">Gym Trainer</label><br>
+				<input type="radio" id="job16" name="job" value="school_worker" required>
+				<label for="job16">Teacher/School Worker</label><br>
+				<input type="radio" id="job17" name="job" value="comsetician" required>
+				<label for="job17">Salon/Cosmetician/Barbers</label><br>
+                <input type="radio" id="job18" name="job" value="police" required>
+				<label for="job18">Police Officer/Firefighter</label><br>
+                <input type="radio" id="job19" name="job" value="food" required>
+				<label for="job19">Restaurant/Food service or other retail</label><br>
+				<input type="radio" id="job20" name="job" value="other_people" required>
+				<label for="job20">Other: Interact with people</label><br>
+                <input type="radio" id="job21" name="job" value="other_noPeople" required>
+				<label for="job21">Other: Don't interact with others</label><br>
 				</div>
         </div>
 
         <div class="tab"> <h2>Behavior:</h2>
             <p>This section will ask you about your day to day behavior over the past 14 days</p>
-            <p>Which one of these best describes your mask habits?
+            <p>Which one of these best describes your mask habits? Note: wearing a mask means covering both the nose and mouth.
             <div>
-                <input type="radio" id="mask1" name="mask" value="mask1" required>
+                <input type="radio" id="mask1" name="mask" value="mask0" required>
                 <label for="mask1">I always wear a mask when I leave the house, and never take it off</label>
             </div>
             <div>
-                <input type="radio" id="mask2" name="mask" value="mask2" required>
+                <input type="radio" id="mask2" name="mask" value="mask1" required>
                 <label for="mask2">I only wear my mask when I'm indoors or around people</label>
             </div>
             <div>
-                <input type="radio" id="mask3" name="mask" value="mask3" required>
+                <input type="radio" id="mask3" name="mask" value="mask2" required>
                 <label for="mask3">I sometimes wear a mask</label>
             </div>
             <div>
-                <input type="radio" id="mask4" name="mask" value="mask4" required>
+                <input type="radio" id="mask4" name="mask" value="mask3" required>
                 <label for="mask4">I never wear a mask</label>
             </div> <br>
 
@@ -240,18 +248,18 @@
                 <label for="handwash3">Not very frequently</label>
             </div> <br>
 
-            How often do you adhere to social distancing? <!-- change to distance -->
+            How far do you stay from others when social distancing?
             <div>
                 <input type="radio" id="socDist0" name="socDist" value="socDist0">
-                <label for="socDist0">I don't social distance</label>
+                <label for="socDist0">&lt;1m/3ft.</label>
             </div>
             <div>
                 <input type="radio" id="socDist1" name="socDist" value="socDist1" required>
-                <label for="socDist1">1m - 3ft</label>
+                <label for="socDist1">1m/3ft</label>
             </div>
             <div>
                 <input type="radio" id="socDist2" name="socDist" value="socDist2" required>
-                <label for="socDist2">2m - 6ft</label>
+                <label for="socDist2">2m/6ft</label>
             </div>
             <div>
                 <input type="radio" id="socDist3" name="socDist" value="socDist3" required>

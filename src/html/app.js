@@ -2,8 +2,8 @@ const button = document.getElementById('submit');
 const userForm = document.getElementById('userInput');
 
 // google cloud URL
-const baseURL = 'https://covid19-dc.wn.r.appspot.com';
-//const baseURL = 'http://localhost:3000'; //for testing
+//const baseURL = 'https://covid19-dc.wn.r.appspot.com';
+const baseURL = 'http://localhost:3000'; //for testing
 
 /*
 * Debugging function that takes the survey inputs and prints them at the bottom of the page at any given time
@@ -24,7 +24,7 @@ async function printSurveyResponses() {
         handwash: formData.get("handwash"), //only if theres data.
         socDist: formData.get("socDist"),
     };
-    
+
     //debug console.log(userData);
     await fetch(`${baseURL}/testReadFile`, {
         method: 'POST',
@@ -45,12 +45,10 @@ async function printSurveyResponses() {
     .catch(error => console.log("API error"));
 }
 
-
-///////////////////////////////////////////////////
-
-//Special Thanks to W3 Schools for this tutorial//
-
-//////////////////////////////////////////////////
+////////////////////////////////////////////////////
+// Special Thanks to W3 Schools for this tutorial //
+//  Modified slightly to include a retake button  //
+////////////////////////////////////////////////////
 let currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 

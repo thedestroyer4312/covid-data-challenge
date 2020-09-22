@@ -70,29 +70,50 @@ app.post('/testReadFile', function (request, response) {
 			}
 
             let ageRisk = riskDataFile["ageRisk"][ageRange];
+
+            let raceFormatted = "";
+            if(request.body.race == 'white_hisp') raceFormatted = "White: Hispanic or Latino";
+            else if(request.body.race == 'white_nonHisp') raceFormatted = "White: Non-Hispanic";
+            else if(request.body.race == 'black') raceFormatted = "Black/African American";
+            else if(request.body.race == 'asian') raceFormatted = "Asian";
+            else if(request.body.race == 'indian_alaskaNative') raceFormatted = "American Indian/Alaskan Native";
+            else if(request.body.race == 'pacificIslander') raceFormatted = "Native Hawaiian/Other Pacific Islander";
+            else raceFormatted = "Multiple Race";
+
+            let incomeStrings = ["Less than $15k", "$15k-$25k", "$25k-$35k", "$35k-$50k", "Above $50k"];
+            let incomeID = parseInt(request.body.income.slice(-1), 10);
+            let incomeFormatted = incomeStrings[incomeID];
+
             let locationRisk = riskDataFile["locationRisk"][request.body.location];
 
+            let maskResponses = ["always wearing one outside", "wearing one around people and indoors, but not outside", "only wearing it sparingly", "never wearing a mask"];
+            let maskID = parseInt(request.body.mask.slice(-1), 10);
+            let maskFormatted = maskResponses[maskID];
+
+            let socDistStrings = ["less than 1 meter/3 feet", "1 meter/3 feet", "2 meters/6 feet", "more than 2 meters/6 feet"];
+            let socDistID = parseInt(request.body.socDist.slice(-1), 10);
+            let socDistFormatted = socDistStrings[socDistID];
+
             //send back finished JSON.
-            //we send the user responses back because we want to format them.
             let respJSON = {
                 age: request.body.age,
                 ageRisk: ageRisk,
                 sex: request.body.sex,
                 sexRisk: -1,
-                race: request.body.race, //format this
+                race: raceFormatted,
                 raceRisk: -1,
-                income: request.body.income, //format this
+                income: incomeFormatted,
                 incomeRisk: -1,
                 location: request.body.location, //maybe???
                 locationRisk: locationRisk,
                 familySize: request.body.familySize,
                 familySizeRisk: -1,
-                job: request.body.job,
+                job: request.body.job, //format
                 jobRisk: -1,
                 avgRisk: avgRisk,
-                mask: request.body.mask, //format
+                mask: maskFormatted,
                 maskRisk: -1,
-                socDist: request.body.socDist, //format
+                socDist: socDistFormatted,
                 socDistRisk: -1,
             };
             response.header("Access-Control-Allow-Origin", "*");
