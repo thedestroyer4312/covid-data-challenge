@@ -48,6 +48,19 @@
     "white_hisp": 72.72,
     "white_nonHisp": 98.88
   },
+  "incomeRisk": {
+    "income0": 83.33,
+    "income1": 71.42,
+    "income2": 57.14,
+    "income3": 50.01,
+    "income4": 38.10
+  },
+  "socDistRisk": {
+    "socDist0": "16.5 to 99",
+    "socDist1": "6.7 to 49.5",
+    "socDist2": "3.3 to 29.7",
+    "socDist3": "2.1 to 13.2"
+  },
   "locationRisk": {
     "MX-AG": 38.07937,
     "MX-BC": 40.62291,

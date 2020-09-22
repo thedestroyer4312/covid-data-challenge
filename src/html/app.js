@@ -25,6 +25,15 @@ async function printSurveyResponses() {
         socDist: formData.get("socDist"),
     };
 
+    for(let factor of Object.keys(userData)) {
+        if(userData[factor] == null || !userData[factor])
+        {
+            alert("Something in the form has not been filled out!");
+            currentTab = 0;
+            return;
+        }
+    }
+
     //debug console.log(userData);
     await fetch(`${baseURL}/testReadFile`, {
         method: 'POST',

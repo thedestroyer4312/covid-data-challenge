@@ -72,6 +72,7 @@ app.post('/testReadFile', function (request, response) {
             let ageRisk = riskDataFile["ageRisk"][ageRange];
 
             let raceFormatted = "";
+            let raceRisk = riskDataFile["raceRisk"][request.body.race];
             if(request.body.race == 'white_hisp') raceFormatted = "White: Hispanic or Latino";
             else if(request.body.race == 'white_nonHisp') raceFormatted = "White: Non-Hispanic";
             else if(request.body.race == 'black') raceFormatted = "Black/African American";
@@ -80,31 +81,33 @@ app.post('/testReadFile', function (request, response) {
             else if(request.body.race == 'pacificIslander') raceFormatted = "Native Hawaiian/Other Pacific Islander";
             else raceFormatted = "Multiple Race";
 
-            let incomeStrings = ["Less than $15k", "$15k-$25k", "$25k-$35k", "$35k-$50k", "Above $50k"];
+            let incomeStrings = ["less than $15k", "$15k-$25k", "$25k-$35k", "$35k-$50k", "above $50k"];
             let incomeID = parseInt(request.body.income.slice(-1), 10);
             let incomeFormatted = incomeStrings[incomeID];
+            let incomeRisk = riskDataFile['incomeRisk'][request.body.income];
 
             let locationRisk = riskDataFile["locationRisk"][request.body.location];
 
-            let maskResponses = ["always wearing one outside", "wearing one around people and indoors, but not outside", "only wearing it sparingly", "never wearing a mask"];
+            let maskResponses = ["always wearing one outside", "wearing one around people and indoors, but not outside", "only wearing masks sparingly", "never wearing a mask"];
             let maskID = parseInt(request.body.mask.slice(-1), 10);
             let maskFormatted = maskResponses[maskID];
 
             let socDistStrings = ["less than 1 meter/3 feet", "1 meter/3 feet", "2 meters/6 feet", "more than 2 meters/6 feet"];
             let socDistID = parseInt(request.body.socDist.slice(-1), 10);
             let socDistFormatted = socDistStrings[socDistID];
+            let socDistRisk = riskDataFile["socDistRisk"][request.body.socDist];
 
             //send back finished JSON.
             let respJSON = {
                 age: request.body.age,
                 ageRisk: ageRisk,
                 sex: request.body.sex,
-                sexRisk: -1,
+                sexRisk: 50.1,
                 race: raceFormatted,
-                raceRisk: -1,
+                raceRisk: raceRisk,
                 income: incomeFormatted,
-                incomeRisk: -1,
-                location: request.body.location, //maybe???
+                incomeRisk: incomeRisk,
+                location: request.body.location,
                 locationRisk: locationRisk,
                 familySize: request.body.familySize,
                 familySizeRisk: -1,
@@ -114,7 +117,7 @@ app.post('/testReadFile', function (request, response) {
                 mask: maskFormatted,
                 maskRisk: -1,
                 socDist: socDistFormatted,
-                socDistRisk: -1,
+                socDistRisk: socDistRisk,
             };
             response.header("Access-Control-Allow-Origin", "*");
             response.send(respJSON);
