@@ -5,6 +5,46 @@ const userForm = document.getElementById('userInput');
 const baseURL = 'https://covid19-dc.wn.r.appspot.com';
 //const baseURL = 'http://localhost:3000'; //for testing
 
+let riskDataFile = null;
+loadDataFile().then(populateLocationList);
+
+/**
+ * Populates the HTML datalist for the location section using the retrieved JSON file. Only called once upon script
+ * execution by setting the inner HTML.
+ */
+function populateLocationList(){
+		let datalist = document.getElementById('locationList');
+		// get the locations
+		let locationRiskObj = riskDataFile.locationRisk;
+		let str = '';
+		for(let loc in locationRiskObj){
+				str += `<option value="${loc}">`;
+		}
+		datalist.innerHTML = str;
+		return;
+}
+
+
+/**
+ * Loads the data JSON file from the backend upon the script running so that it is available for reference to the other
+ * functions
+ */
+function loadDataFile(){
+		return fetch(`${baseURL}/getJSONData`, {
+				method: 'GET',
+				headers:{
+						'Content-Type': 'application/json',
+				},
+		})
+		.then(response => response.json())
+		.then(data => {
+				riskDataFile = data;
+		})
+		.catch(() => {
+				console.error("Error loading file allDataJson.json");
+		});
+}
+
 /*
 * Debugging function that takes the survey inputs and prints them at the bottom of the page at any given time
 */
@@ -16,17 +56,15 @@ async function printSurveyResponses() {
         sex: formData.get("sex"),
         race: formData.get("race"),
         income: formData.get("income"),
-        location: 'US-CA', //or in the form MX-BC //this is a placeholder
-        // location: formData.get("location"),
+        location: formData.get("location"),
         familySize: formData.get("familySize"),
-        //job: JOB HERE,
-        job: 'dentist',
+        job: formData.get("job"),
         activities: formData.getAll("activities"),
         mask: formData.get("mask"),
         handwash: formData.get("handwash"), //only if theres data.
         socDist: formData.get("socDist"),
     };
-
+			
     //debug //document.getElementById('responsesHERE').innerHTML = userData;
     await fetch(`${baseURL}/testReadFile`, {
         method: 'POST',
