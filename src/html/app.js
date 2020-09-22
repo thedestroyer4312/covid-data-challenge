@@ -2,8 +2,8 @@ const button = document.getElementById('submit');
 const userForm = document.getElementById('userInput');
 
 // google cloud URL
-//const baseURL = 'https://covid19-dc.wn.r.appspot.com';
-const baseURL = 'http://localhost:3000'; //for testing
+const baseURL = 'https://covid19-dc.wn.r.appspot.com';
+//const baseURL = 'http://localhost:3000'; //for testing
 
 /*
 * Debugging function that takes the survey inputs and prints them at the bottom of the page at any given time
