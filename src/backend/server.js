@@ -15,111 +15,92 @@ const storage = new Storage({
     keyFilename: process.env.PATHTOFILE
 });
 
-// let our JSON file be a global variable so that it is only opened once
-let riskDataFile = null;
-loadFile();
-
-/**
- * Loads the file allDataJson.json from the filepath using a read stream
- * The file itself is a structured as a JSON object
- * Function returns the JSON.parse of the file, so the plain JS object version of the JSON object
- */
-function loadFile(){
-		let buf = '';
-		let file = storage.bucket('processed-data.cv19dc').file('allDataJson.json');
-		file.createReadStream()
+app.post('/testReadFile', function (request, response) {
+    const file = storage.bucket('processed_data-cv19dc').file('allDataJson.json');
+    let buf = '';
+    file.createReadStream()
         .on('data', (rawData) => {
             //read the file from the stream
             buf = buf + rawData;
         })
         .on('end', () => {
-						// now the file has been fully read, JSON parse the buffer and set riskDataFile to it
-						riskDataFile =  JSON.parse(buf);
-				}).on('error', () =>{
-						console.error("Error executing loadFile()");
-				});
-}
+            let riskDataFile = JSON.parse(buf);
+            let activityArr = request.body.activities;
+            let riskLvl = 0;
+            //search through the JSON for each activity's risk level.
+            for(let task of activityArr) {
+                riskLvl = riskLvl + (riskDataFile["activityRisk"][task] * 20);
+            }
+            let avgRisk = 0;
+            if(activityArr.length > 0) avgRisk = (riskLvl/activityArr.length).toFixed(2);
 
-app.post('/testReadFile', function (request, response) {
-    let activityArr = request.body.activities;
-    let riskLvl = 0;
-    //search through the JSON for each activity's risk level.
-    for(let task of activityArr) {
-        riskLvl = riskLvl + (riskDataFile["activityRisk"][task] * 20);
-    }
-    let avgRisk = 0;
+            //ageRisk
+            let ageRange = "";
+            let userAge = request.body.age;
 
-		// average the risk of their activities
-    if(activityArr.length > 0){ 
-				avgRisk = (riskLvl/activityArr.length).toFixed(2);
-		}
+			// Trevor's alternative: iterate through an array of age upper boundaries to find the age range
+			let ageRanges = [4, 17, 29, 39, 49, 64, 74, 84];
+			let lowerAge = null, upperAge = null;
 
-    //ageRisk
-    let ageRange = "";
-    let userAge = request.body.age;
+			/*
+			 * Iterate through the array of age ranges until we find the minimal age greater than our user age
+			 * i.e. the upper age boundary for our user. Then, set our upper age boundary variable to said boundary.
+			 * For each iteration of the loop that this is not true, the lower age is set to the current.
+			 * So, when the loop terminates, the lower age will be the previous, and the upper will be the next,
+			 * creating the minimal interval for our age.
+			 * Edge cases:
+			 *		1. Age 0-4: The if statement will trigger on the first iteration,  and lowerAge will be left null
+			 *		2. Age 85+: The if statement will never trigger, so upperAge will be left null
+			 */
+			for(let upperAgeBoundary of ageRanges){
+				if(userAge <= upperAgeBoundary){
+					upperAge = upperAgeBoundary;
+					break;
+			    }
+				lowerAge = upperAgeBoundary;
+			}
 
-		// Trevor's alternative: iterate through an array of age upper boundaries to find the age range
-		let ageRanges = [4, 17, 29, 39, 49, 64, 74, 84];
-		let lowerAge = null, upperAge = null;
+			// now, calculate our age based on our range
+			if(!lowerAge){ 	// first, the edge case for 0-4 years old
+			    ageRange = "0-4";
+			}else if(!upperAge) { // second edge case: over 85 years old
+				ageRange = "85+";
+			}else {
+				ageRange = `${lowerAge + 1}-${upperAge}`;
+			}
 
-		/*
-		 * Iterate through the array of age ranges until we find the minimal age greater than our user age
-		 * i.e. the upper age boundary for our user. Then, set our upper age boundary variable to said boundary.
-		 * For each iteration of the loop that this is not true, the lower age is set to the current.
-		 * So, when the loop terminates, the lower age will be the previous, and the upper will be the next,
-		 * creating the minimal interval for our age.
-		 * Edge cases:
-		 *		1. Age 0-4: The if statement will trigger on the first iteration,  and lowerAge will be left null
-		 *		2. Age 85+: The if statement will never trigger, so upperAge will be left null
-		 */
-		for(let upperAgeBoundary of ageRanges){
-			if(userAge <= upperAgeBoundary){
-				upperAge = upperAgeBoundary;
-				break;
-		    }
-			lowerAge = upperAgeBoundary;
-		}
-		// now, calculate our age based on our range
-		if(!lowerAge){ 	// first, the edge case for 0-4 years old
-		    ageRange = "0-4";
-		}else if(!upperAge) { // second edge case: over 85 years old
-			ageRange = "85+";
-		}else {
-			ageRange = `${lowerAge + 1}-${upperAge}`;
-		}
+            let ageRisk = riskDataFile["ageRisk"][ageRange];
+            let locationRisk = riskDataFile["locationRisk"][request.body.location];
 
-    let ageRisk = riskDataFile["ageRisk"][ageRange];
-    let locationRisk = riskDataFile["locationRisk"][request.body.location];
-
-    //send back finished JSON.
-    //we send the user responses back because we want to format them.
-    let respJSON = {
-        age: request.body.age,
-        ageRisk: ageRisk,
-        sex: request.body.sex,
-        sexRisk: -1,
-        race: request.body.race, //format this
-        raceRisk: -1,
-        income: request.body.income, //format this
-        incomeRisk: -1,
-        location: request.body.location, //maybe???
-        locationRisk: locationRisk,
-        familySize: request.body.familySize,
-        familySizeRisk: -1,
-        job: request.body.job,
-        jobRisk: -1,
-        avgRisk: avgRisk,
-        mask: request.body.mask, //format
-        maskRisk: -1,
-        socDist: request.body.socDist, //format
-        socDistRisk: -1,
-    };
-    response.header("Access-Control-Allow-Origin", "*");
-    response.send(respJSON);
-});
-
-app.get('/getJSONData', function(request, response){
-		response.send(JSON.stringify(riskDataFile));
+            //send back finished JSON.
+            //we send the user responses back because we want to format them.
+            let respJSON = {
+                age: request.body.age,
+                ageRisk: ageRisk,
+                sex: request.body.sex,
+                sexRisk: -1,
+                race: request.body.race, //format this
+                raceRisk: -1,
+                income: request.body.income, //format this
+                incomeRisk: -1,
+                location: request.body.location, //maybe???
+                locationRisk: locationRisk,
+                familySize: request.body.familySize,
+                familySizeRisk: -1,
+                job: request.body.job,
+                jobRisk: -1,
+                avgRisk: avgRisk,
+                mask: request.body.mask, //format
+                maskRisk: -1,
+                socDist: request.body.socDist, //format
+                socDistRisk: -1,
+            };
+            response.header("Access-Control-Allow-Origin", "*");
+            response.send(respJSON);
+        })
+        .on('error', () => {
+            return console.error("ERROR");
+        });
 });
 
 app.get('/', function (request, response) {
