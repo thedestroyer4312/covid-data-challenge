@@ -13,6 +13,14 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+#userInput {
+  background-color: aliceblue;
+  margin: 25px auto;
+  padding: 10px;
+  width: 80%;
+  min-width: 300px;
+}
+
 /* Overall top section of page */
 .topnav {
   overflow: hidden;
@@ -58,35 +66,28 @@ input[type=number]{
     outline: none;
 }
 
-.collapsible {
-  background-color: slategrey;
-  color: white;
-  cursor: pointer;
-  padding: 8px;
-  width: 30%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: small;
+input.invalid {
+  background-color: pink;
 }
-
-.collapsible:hover, .collapsible:active {
-  background-color: DarkSlateGray;
-}
-
-.collapsible:after {
-  content: '\02C5';
-  font-size: 13px;
-  color: white;
-  float: right;
-  margin-left: 5px;
-}
-
-/* Style the collapsible content. Note: hidden by default */
-.content {
-  padding: 0 18px;
+/* Hide nonactive form pages*/
+.tab {
   display: none;
-  overflow: hidden;
+}
+
+/* Circles to show progess, change to something else maybe*/
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: cornflowerblue;
+  border: none;
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
 }
 
 button {
@@ -98,9 +99,6 @@ button {
     border-radius: 4px;
 }
 
-footer {
-    position: absolute;
-    padding: 5px;
-    bottom: 0;
-    text-align: center;
+button:hover {
+    cursor: pointer;
 }
