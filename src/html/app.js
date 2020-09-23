@@ -10,7 +10,13 @@ const baseURL = 'https://covid19-dc.wn.r.appspot.com';
 */
 async function printSurveyResponses() {
     let formData = new FormData(userForm);
-
+    try {
+        let jobTitle = document.getElementById(`${formData.get('job')}`).labels[0].textContent;
+    } catch (error) {
+        alert("Something in the form has not been filled out!");
+        currentTab = 0;
+        return;
+    }
     let userData = {
         age: formData.get("age"),
         sex: formData.get("sex"),
@@ -19,13 +25,14 @@ async function printSurveyResponses() {
         location: formData.get("location"),
         familySize: formData.get("familySize"),
         job: formData.get("job"),
+        jobTitle: document.getElementById(`${formData.get('job')}`).labels[0].textContent,
         activities: formData.getAll("activities"),
         mask: formData.get("mask"),
         handwash: formData.get("handwash"), //only if theres data.
         socDist: formData.get("socDist"),
     };
 
-    for(let factor of Object.keys(userData)) {
+    for(let factor of Object.keys(userData)) { //check if form is incomplete
         if(userData[factor] == null || !userData[factor])
         {
             alert("Something in the form has not been filled out!");

@@ -88,6 +88,8 @@ app.post('/testReadFile', function (request, response) {
 
             let locationRisk = riskDataFile["locationRisk"][request.body.location];
 
+            let jobRisk = riskDataFile['jobRisk'][request.body.job];
+
             let maskResponses = ["always wearing one outside", "wearing one around people and indoors, but not outside", "only wearing masks sparingly", "never wearing a mask"];
             let maskID = parseInt(request.body.mask.slice(-1), 10);
             let maskFormatted = maskResponses[maskID];
@@ -111,8 +113,8 @@ app.post('/testReadFile', function (request, response) {
                 locationRisk: locationRisk,
                 familySize: request.body.familySize,
                 familySizeRisk: -1,
-                job: request.body.job, //format
-                jobRisk: -1,
+                job: request.body.jobTitle,
+                jobRisk: jobRisk,
                 avgRisk: avgRisk,
                 mask: maskFormatted,
                 maskRisk: -1,
