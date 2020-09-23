@@ -39,6 +39,11 @@
     "75-84": 19.36,
     "85+": 14.96
   },
+  "sexRisk": {
+    "male": 54,
+    "female": 46,
+    "other": 0
+  },
   "raceRisk": {
     "pacificIslander": 0.72,
     "indian_alaskaNative": 2.88,
@@ -49,17 +54,21 @@
     "white_nonHisp": 98.88
   },
   "incomeRisk": {
-    "income0": 83.33,
-    "income1": 71.42,
-    "income2": 57.14,
-    "income3": 50.01,
-    "income4": 38.10
+    "income0": 99,
+    "income1": 85.71,
+    "income2": 68.57,
+    "income3": 60.00,
+    "income4": 45.71
   },
   "socDistRisk": {
     "socDist0": "16.5 to 99",
     "socDist1": "6.7 to 49.5",
     "socDist2": "3.3 to 29.7",
     "socDist3": "2.1 to 13.2"
+  },
+  "maskRisk": {
+    "mask0": 17,
+    "mask1": 3
   },
   "jobRisk": {
       "dental": 94.77,
