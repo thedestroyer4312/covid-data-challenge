@@ -19,19 +19,28 @@
         <p>Here are the methods used to calculate risk scores found in the quiz.</p>
 
         <p><strong>Age: </strong>Age risk level was determined by taking the “percentage” value and multiplying it by 4.4 to scale it from 0-100.
-            The data was taken from the following dataset: </p>
-        <p><strong>Race: </strong>Race risk level was determined by taking the “percentage” value and multiplying it by 2.4 to scale it from 0-100.
-            The data was taken from the following dataset:</p>
+            The data was taken from the following dataset: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a> </p>
+        <p><strong>Race: </strong>Race risk level was determined by taking the “percentage” value and multiplying it by 2.4 to scale it from 0-100. NOTE: Only US data exists for race risk.
+            The data was taken from the following dataset: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a></p>
+        <p> <strong>Sex: </strong> Sex risk level was calculated by taking the amount of cases for females and males, and then calculating the cases per capita for each gender.
+            Data was taken from the follow dataset: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a>. Population was taken from
+            <a href="https://www.kff.org/other/state-indicator/distribution-by-gender/?dataView=1&currentTimeframe=0&selectedRows=%7B%22states%22:%7B%22all%22:%7B%7D%7D,%22wrapups%22:%7B%22united-states%22:%7B%7D%7D%7D&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D">
+            HERE</a> and scaled to 100.</p>
+        <p> <strong>Income:</strong> Income risk level was determined by taking the percentage of cases from each income bracket, and multiplying it by 2.85 to scale it from 0-100.
+            The data was taken from the following dataset: <a href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/immunocompromised.html">HERE</a></p>
         <p> <strong>Location: </strong>Location risk level was determined by taking the “percentage of national cases” and multiplying it by 6
-            to scale it from 0-100. The data was taken from the following dataset: </p>
-        <p> <strong>Occupation/Jobs: </strong> Risk Level was determined by each occupation ranking from 1-100 on risk of getting COVID-19.
+            to scale it from 0-100. This data can be found at our github repo <a href="https://github.com/thedestroyer4312/covid-data-challenge/tree/master/Cleaned%20Data">HERE</a> </p>
+        <p> <strong>Occupation/Jobs: </strong> Risk Level was determined by each occupation ranking from 1-100 on risk of getting COVID-19. Similar occupations were averaged together to form categories,
+            and all other jobs not not mentioned are assumed to be an average level of 23. <br>
             The data was taken from the following dataset: <a href="https://www.visualcapitalist.com/the-front-line-visualizing-the-occupations-with-the-highest-covid-19-risk/">HERE</a> </p>
         <p> <strong>Activity risk: </strong>Activities were categorized based on a risk from 1-5, then expanded to fit the scale of 1-100.
-            These activities were categorized based on data from the following website. <a href="https://hartfordhealthcare.org/about-us/news-press/news-detail?articleid=26936&publicId=395">HERE</a></p>
+            These activities were categorized based on data from the following website. <a href="https://hartfordhealthcare.org/about-us/news-press/news-detail?articleid=26936&publicId=395">HERE</a> <br>
+            The user checked the box next to each activity they participated in the past two weeks, and the activity risks were averaged together to form a score of the user’s general activity risk. </p>
         <p> <strong>Mask wearing: </strong> Mask risk level was calculated based on data from the following website that stated
             the rate of COVID-19 transmission based on whether or not an individual wore a mask. <a href="https://www.livescience.com/face-masks-eye-protection-covid-19-prevention.html">HERE</a></p>
         <p> <strong>Social Distancing: </strong>Social Distancing risk level was calculated based on distance. For each meter of distancing between two people was a range (from low to high) of risk that the individual would have.
-            The data was pulled from the following website. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31142-9/fulltext"> HERE </a> </p>
+            The data was pulled from the following website. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31142-9/fulltext"> HERE </a> <br>
+            The user answered based on average distance from other people, and each distance is correlated to a range of risk. </p>
     </body>
     <script src = "app.js"></script>
     <noscript>Please turn on JavaScript!</noscript>

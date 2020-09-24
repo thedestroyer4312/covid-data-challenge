@@ -10,24 +10,37 @@ const baseURL = 'https://covid19-dc.wn.r.appspot.com';
 */
 async function printSurveyResponses() {
     let formData = new FormData(userForm);
-
+    try {
+        let jobTitle = document.getElementById(`${formData.get('job')}`).labels[0].textContent;
+    } catch (error) {
+        alert("Something in the form has not been filled out!");
+        currentTab = 0;
+        return;
+    }
     let userData = {
         age: formData.get("age"),
         sex: formData.get("sex"),
         race: formData.get("race"),
         income: formData.get("income"),
-        location: 'US-CA', //or in the form MX-BC //this is a placeholder
-        // location: formData.get("location"),
-        familySize: formData.get("familySize"),
-        //job: JOB HERE,
-        job: 'dentist',
+        location: formData.get("location"),
+        job: formData.get("job"),
+        jobTitle: document.getElementById(`${formData.get('job')}`).labels[0].textContent,
         activities: formData.getAll("activities"),
         mask: formData.get("mask"),
         handwash: formData.get("handwash"), //only if theres data.
         socDist: formData.get("socDist"),
     };
 
-    //debug //document.getElementById('responsesHERE').innerHTML = userData;
+    for(let factor of Object.keys(userData)) { //check if form is incomplete
+        if(userData[factor] == null || !userData[factor])
+        {
+            alert("Something in the form has not been filled out!"); //spanish here!
+            currentTab = 0;
+            return;
+        }
+    }
+
+    //debug console.log(userData);
     await fetch(`${baseURL}/testReadFile`, {
         method: 'POST',
         headers: {
@@ -36,23 +49,56 @@ async function printSurveyResponses() {
         body: JSON.stringify(userData),
     })
     .then(response => response.json())
-    .then(data => {
-        //print to website
-        console.log(data);
+    .then(data => { //print to website
+        //console.log(data); //debug
+
         for (let key of Object.keys(data)) { //dynamically display results.
             let id = key + "User";
+            if(key == 'activityRisk') continue;
             document.getElementById(id).innerHTML = data[key];
         }
+
+        //display tips depending on what choices the user made.
+        let hra = document.getElementById('highRiskActivity');
+        let lra = document.getElementById('lowRiskActivity');
+        if(data["activityRisk"] == true) {
+            lra.style.display = "none";
+            hra.style.display = "block";
+        }
+        else {
+            hra.style.display = "none";
+            lra.style.display = "block";
+        }
+
+        let yesMask = document.getElementById('mask');
+        let noMask = document.getElementById('noMask');
+        if(data["mask"] == "never wearing a mask") {
+            yesMask.style.display = "none";
+            noMask.style.display = "block";
+        }
+        else {
+            noMask.style.display = "none";
+            yesMask.style.display = "block";
+        }
+
+        let noSD = document.getElementById('noSocialDist');
+        let yesSD = document.getElementById('socialDist');
+        if(formData.get('socDist') == 'socDist1' || formData.get('socDist') == 'socDist0') {
+            yesSD.style.display = "none";
+            noSD.style.display = "block";
+        }
+        else {
+            noSD.style.display = "none";
+            yesSD.style.display = "block";
+        }
     })
-    .catch(error => console.log("API error"));
+    .catch(error => console.log("API error: " + error));
 }
 
-
-///////////////////////////////////////////////////
-
-//Special Thanks to W3 Schools for this tutorial//
-
-//////////////////////////////////////////////////
+////////////////////////////////////////////////////
+// Special Thanks to W3 Schools for this tutorial //
+//  Modified slightly to include a retake button  //
+////////////////////////////////////////////////////
 let currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 

@@ -15,7 +15,8 @@
         <a href="./about.html">About Us</a>
     </div>
 
-    <h1 id = "Title">COVID-19 Transmission Quiz</h1>
+    <h1 id = "Title">COVID-19 Transmission Assessment
+</h1>
     <a href="./spanishQuiz.html"><h3>Take the quiz in Spanish Here</h3></a>
     <form id = "userInput" method = "post">
 
@@ -36,7 +37,7 @@
                 </div>
                 <div>
                     <input type="radio" id="other" name="sex" value="other" required>
-                    <label for="other">Other</label>
+                    <label for="other">Prefer not to answer</label>
                 </div> </p>
 
                 <p>What is your race?
@@ -57,36 +58,41 @@
                         <label for="multiRace">Multiple Race</label> <br>
                     </div> </p>
 
-                    <p>What is your income?
+                    <p>Select the option that most describes your household income.
                         <div>
-                            <input type="radio" id="income1" name="income" value="income1" required>
-                            <label for="income1">&lt;$15,000</label>
+                            <input type="radio" id="income1" name="income" value="income0" required>
+                            <label for="income1">Less than $15,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income2" name="income" value="income2" required>
+                            <input type="radio" id="income2" name="income" value="income1" required>
                             <label for="income2">$15,000-$25,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income3" name="income" value="income3" required>
+                            <input type="radio" id="income3" name="income" value="income2" required>
                             <label for="income3">$25,001-$35,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income4" name="income" value="income4" required>
+                            <input type="radio" id="income4" name="income" value="income3" required>
                             <label for="income4">$35,000-$50,000</label>
                         </div>
                         <div>
-                            <input type="radio" id="income5" name="income" value="income5" required>
-                            <label for="income5">$50,000+</label>
+                            <input type="radio" id="income5" name="income" value="income4" required>
+                            <label for="income5">$50,000 or more</label>
                         </div></p>
 
                     </div>
 
         <div class="tab"> <h2>Household and Location:</h2>
             <p>This section will ask you about household factors and living conditions</p>
-            Where do you live? <br>
-            <!-- dropdown search bar goes here -->
-            <p><label for="familySize">How many other people do you live with?</label>
-                <input type="number" id="familySize" name="familySize" min="0" max="99" required></p>
+            <label for="location"> Where do you live?</label>
+                 <!-- dropdown search bar goes here -->
+                 <!-- note that the required attribute can only be put on input, select, textarea -->
+                <input type="text" name="location" list="locationList" required>
+                <datalist id="locationList">
+                     <option value="US-CA">
+                     <option value="MX-BC">
+                 </datalist> <br>
+                <span>Please format the location as US-CA or MX-BC</span>
             </div>
 
         <div class="tab"> <h2>Places visited/Activities Done:</h2>
@@ -161,27 +167,72 @@
         </div>
 
         <div class="tab"> <h2>Jobs:</h2>
-            <p>Do you work in any of these jobs? If not, select "Other", even if you are unemployed, a student, or dead.</p>
+            <p><label for="job">Select the job that best fits your description. Select "Other" if, your job does not show up on this list
+                OR you have one of these jobs but do not interact with people face to face, OR you are unemployed/a student.
+			<div>
+				<input type="radio" id="dental" name="job" value="dental" required>
+				<label for="dental">Dental Job</label><br>
+				<input type="radio" id="doctor" name="job" value="doctor" required>
+				<label for="doctor">Doctor (all types)</label><br>
+				<input type="radio" id="therapist" name="job" value="therapist" required>
+				<label for="therapist">Therapist</label><br>
+				<input type="radio" id="surgeon" name="job" value="surgeon" required>
+				<label for="surgeon">Surgeon</label><br>
+				<input type="radio" id="nurse" name="job" value="nurse" required>
+				<label for="nurse">Nurse</label><br>
+				<input type="radio" id="technologist" name="job" value="technologist" required>
+				<label for="technologist">Medical Technologist</label><br>
+				<input type="radio" id="acupuncturist" name="job" value="acupuncturist" required>
+				<label for="acupuncturist">Acupuncturist</label><br>
+                <input type="radio" id="chiropractor" name="job" value="chiropractor" required>
+                <label for="chiropractor">Chiropractor</label><br>
+                <input type="radio" id="vet_worker" name="job" value="vet_worker" required>
+                <label for="vet_worker">Vet Workers/Veternarians</label><br>
+                <input type="radio" id="health_worker" name="job" value="health_worker" required>
+                <label for="health_worker">Health Worker (Outside of a hospital)</label><br>
+                <input type="radio" id="funeral" name="job" value="funeral" required>
+                <label for="funeral">Funeral Worker/Mortician</label><br>
+                <input type="radio" id="taxi" name="job" value="taxi" required>
+                <label for="taxi">Taxi/Rideshare Driver</label><br>
+                <input type="radio" id="airport" name="job" value="airport" required>
+                <label for="airport">Flight/Airport Job</label><br>
+				<input type="radio" id="med_technician" name="job" value="med_technician" required>
+				<label for="med_technician">Medical Technician</label><br>
+				<input type="radio" id="trainer" name="job" value="trainer" required>
+				<label for="trainer">Gym Trainer</label><br>
+				<input type="radio" id="school_worker" name="job" value="school_worker" required>
+				<label for="school_worker">Teacher/School Worker</label><br>
+				<input type="radio" id="cosmetician" name="job" value="cosmetician" required>
+				<label for="cosmetician">Salon/Cosmetician/Barbers</label><br>
+                <input type="radio" id="police" name="job" value="police" required>
+				<label for="police">Police Officer/Firefighter/Investigator</label><br>
+                <input type="radio" id="food" name="job" value="food" required>
+				<label for="food">Restaurant/Food service or other retail/customer service</label><br>
+                <input type="radio" id="humanService" name="job" value="humanService" required>
+                <label for="humanService">Human Services</label><br>
+                <input type="radio" id="jail" name="job" value="jail" required>
+                <label for="jail">Jail/Prison Guard or Immigration/Custom Inspector</label><br>
+                <input type="radio" id="entertainment" name="job" value="entertainment" required>
+                <label for="entertainment">Entertainment, Casino, Gambling or Amusement industry</label><br>
+                <input type="radio" id="construction" name="job" value="construction" required>
+                <label for="construction">Construction Worker</label><br>
+                <input type="radio" id="other_people" name="job" value="other_people" required>
+                <label for="other_people">Other job that involves face to face interaction</label><br>
+				<input type="radio" id="other_noPeople" name="job" value="other_noPeople" required>
+				<label for="other_noPeople">Other</label><br>
+				</div>
         </div>
 
         <div class="tab"> <h2>Behavior:</h2>
-            <p>This section will ask you about your day to day behavior over the past 14 days</p>
-            <p>Which one of these best describes your mask habits?
+            <p>This section will ask you about your day to day behavior over the past 14 days</p> <br>
+            Which one of these best describes your mask habits? Note: "wearing a mask" means a mask that covers both the nose and mouth.
+            <div>
+                <input type="radio" id="mask0" name="mask" value="mask0" required>
+                <label for="mask0">I do not wear a mask when I leave the house</label>
+            </div>
             <div>
                 <input type="radio" id="mask1" name="mask" value="mask1" required>
-                <label for="mask1">I always wear a mask when I leave the house, and never take it off</label>
-            </div>
-            <div>
-                <input type="radio" id="mask2" name="mask" value="mask2" required>
-                <label for="mask2">I only wear my mask when I'm indoors or around people</label>
-            </div>
-            <div>
-                <input type="radio" id="mask3" name="mask" value="mask3" required>
-                <label for="mask3">I sometimes wear a mask</label>
-            </div>
-            <div>
-                <input type="radio" id="mask4" name="mask" value="mask4" required>
-                <label for="mask4">I never wear a mask</label>
+                <label for="mask1">I wear a mask when I leave the house</label>
             </div> <br>
 
             How often do you wash your hands?
@@ -198,18 +249,18 @@
                 <label for="handwash3">Not very frequently</label>
             </div> <br>
 
-            How often do you adhere to social distancing? <!-- change to distance -->
+            How far do you stay from others when social distancing?
             <div>
                 <input type="radio" id="socDist0" name="socDist" value="socDist0">
-                <label for="socDist0">I don't social distance</label>
+                <label for="socDist0">&lt;1m/3ft.</label>
             </div>
             <div>
                 <input type="radio" id="socDist1" name="socDist" value="socDist1" required>
-                <label for="socDist1">1m - 3ft</label>
+                <label for="socDist1">1m/3ft</label>
             </div>
             <div>
                 <input type="radio" id="socDist2" name="socDist" value="socDist2" required>
-                <label for="socDist2">2m - 6ft</label>
+                <label for="socDist2">2m/6ft</label>
             </div>
             <div>
                 <input type="radio" id="socDist3" name="socDist" value="socDist3" required>
@@ -219,6 +270,7 @@
 
         <div class="tab"> <h2>Results:</h2>
             <p>Here is a detailed breakdown of how each of your choices affects your risk level.</p>
+            <p>Risk level is scored from a level of 1-100, with 1 being least risky and 100 being most risky. If a score reads 0, that factor was not taken into consideration when calculating.</p>
 
             <strong>Age</strong> <br>
             Your age is <span id="ageUser"></span>, which has a risk level of <span id="ageRiskUser"></span> <br>
@@ -230,8 +282,6 @@
             Your income is <span id="incomeUser"></span>, which has a risk level of <span id="incomeRiskUser"></span> <br>
             <strong>Location</strong> <br>
             You live in <span id="locationUser"></span>, which has a risk level of <span id="locationRiskUser"></span> <br>
-            <strong>Family size</strong> <br>
-            You live with <span id="familySizeUser"></span> other people, which has a risk level of <span id="familySizeRiskUser"></span> <br>
             <strong>Job</strong> <br>
             You said your job is <span id="jobUser"></span>, which has a risk level of <span id="jobRiskUser"></span> <br> <br>
             <strong>Activity Risk</strong> <br>
@@ -240,7 +290,52 @@
             <strong>Mask habit</strong> <br>
             You said your mask habit is <span id="maskUser"></span>, which has a risk level of <span id="maskRiskUser"></span> <br>
             <strong>Social Distancing</strong> <br>
-            You said you maintain an average distance of <span id="socDistUser"></span> from others, which has a risk level of <span id="socDistRiskUser"></span> <br>
+            You said you maintain an average distance of <span id="socDistUser"></span> from others, which has a risk level
+            in the range of <span id="socDistRiskUser"></span> <br>
+
+            <h2>Tips:</h2>
+            <p>Here are some personalized tips and suggestions to help reduce your likelihood to contract COVID-19</p>
+
+            <div id="noMask">
+                <strong>No mask:</strong> Your results indicate that you do not wear a mask when going out of the house.
+                We would highly encourage you to wear a mask as the data indicates that wearing a mask decreases transmission rates by more than 80%.
+                For more information, see the <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/about-face-coverings.html">CDC guidelines</a> on masks.
+            </div>
+
+            <div id="mask">
+                <strong>Mask: </strong> Your results indicate that you do wear a mask when going out of the house.
+                We appreciate this behavior and would highly encourage you to continue to wear a mask as
+                the data indicates that wearing a mask decreases transmission rates by more than 80%.
+                For more information, see the <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/about-face-coverings.html">CDC guidelines</a> on masks.
+            </div> <br>
+
+            <div id="noSocialDist">
+                <strong>No Social Distancing:</strong> Your results indicate that on average, you stay away from others by less than 6 feet.
+                The data indicates a significant drop in COVID-19 transmission rates when social distancing by at least 6 feet away from others.
+                For more information, see the <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/social-distancing.html">CDC guidelines</a> on social distancing.
+            </div>
+
+            <div id="socialDist">
+                <strong>Social Distancing:</strong> Your results indicate that on average, you stay away from others by more than or equal to 6 feet.
+                We appreciate this behavior and would encourage you to continue to social distance.
+                The data indicates a significant drop in COVID-19 transmission rates when social distancing by at least 6 feet away from others.
+                For more information, see the <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/social-distancing.html">CDC guidelines</a> on social distancing.
+            </div> <br>
+
+            <div id="highRiskActivity">
+                <strong>High Risk Activities: </strong> Your results indicate that you participate in high risk level activities.
+                These activities are high risk because they involve close contact with many other people, which is statistically shown to drastically
+                 increase transmission rates. Please refrain from participating in these high risk activities if at all possible.
+            </div>
+
+            <div id="lowRiskActivity">
+                <strong>Low Risk Activities: </strong> Your results indicate that you participate in low risk level activities.
+                We encourage this behavior as it is conducive to the least amount of risk for contracting COVID-19.
+                These activities are low risk because they don't involve close contact with many other people.
+                We encourage you to continue to refrain from participating in any high risk activities if at all possible.
+            </div> <br>
+
+            <p>Want to see how we calculated your risk scores? Check the <strong>Methods</strong> tab for more info!</p>
         </div>
 
         <div style="overflow:auto;">
