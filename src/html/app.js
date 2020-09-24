@@ -5,6 +5,7 @@ const userForm = document.getElementById('userInput');
 const baseURL = 'https://covid19-dc.wn.r.appspot.com';
 //const baseURL = 'http://localhost:3000'; //for testing
 
+populateLocations();
 /*
 * Debugging function that takes the survey inputs and prints them at the bottom of the page at any given time
 */
@@ -27,7 +28,7 @@ async function printSurveyResponses() {
         jobTitle: document.getElementById(`${formData.get('job')}`).labels[0].textContent,
         activities: formData.getAll("activities"),
         mask: formData.get("mask"),
-        handwash: formData.get("handwash"), //only if theres data.
+        handwash: formData.get("handwash"),
         socDist: formData.get("socDist"),
         lastCheckbox: formData.get("legalBox")
     };
@@ -42,7 +43,7 @@ async function printSurveyResponses() {
     }
 
     //debug console.log(userData);
-    await fetch(`${baseURL}/readFile`, {
+    await fetch(`${baseURL}/processData`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -100,15 +101,10 @@ async function printSurveyResponses() {
 
 /**
  * Populates the locations datalist dropdown by retrieving the actual JSON file via a GET request to
- * /readFile
+ * getDataFile
  */
 function populateLocations(){
-	fetch(`${baseURL}/readFile`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
+	fetch(`${baseURL}/getDataFile`)
 	.then(response => response.json())
 	.then(riskDataObj => {
 		// the object is a plain JS object now, already destructured from JSON

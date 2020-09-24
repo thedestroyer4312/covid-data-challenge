@@ -15,7 +15,11 @@ const storage = new Storage({
     keyFilename: process.env.PATHTOFILE
 });
 
-app.get('/readFile', function(request, response){
+/**
+ * GET - Returns the json file
+ *
+ */
+app.get('/getDataFile', function(request, response){
 	const file = storage.bucket('processed_data-cv19dc').file('allDataJson.json');
     let buf = '';
     file.createReadStream()
@@ -29,10 +33,14 @@ app.get('/readFile', function(request, response){
 		})
 		.on('error', () => {
 			return console.error("ERROR");
-		}
-}
+		})
+});
 
-app.post('/readFile', function (request, response) {
+/**
+ * POST - Receives user data and processes it, returning a json of risk factors.
+ *
+ */
+app.post('/processData', function (request, response) {
     const file = storage.bucket('processed_data-cv19dc').file('allDataJson.json');
     let buf = '';
     file.createReadStream()
