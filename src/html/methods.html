@@ -20,9 +20,14 @@
 
         <p><strong>Age: </strong>Age risk level was determined by taking the “percentage” value and multiplying it by 4.4 to scale it from 0-100.
             The data was taken from the following dataset: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a> </p>
-        <p><strong>Race: </strong>Race risk level was determined by taking the “percentage” value and multiplying it by 2.4 to scale it from 0-100.
+        <p><strong>Race: </strong>Race risk level was determined by taking the “percentage” value and multiplying it by 2.4 to scale it from 0-100. NOTE: Only US data exists for race risk.
             The data was taken from the following dataset: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a></p>
-        <p> <strong>Sex: </strong> Gender risk level was taken from the follow dataset: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a></p>
+        <p> <strong>Sex: </strong> Sex risk level was calculated by taking the amount of cases for females and males, and then calculating the cases per capita for each gender.
+            Data was taken from the follow dataset: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a>. Population was taken from
+            <a href="https://www.kff.org/other/state-indicator/distribution-by-gender/?dataView=1&currentTimeframe=0&selectedRows=%7B%22states%22:%7B%22all%22:%7B%7D%7D,%22wrapups%22:%7B%22united-states%22:%7B%7D%7D%7D&sortModel=%7B%22colId%22:%22Location%22,%22sort%22:%22asc%22%7D">
+            HERE</a> and scaled to 100.</p>
+        <p> <strong>Income:</strong> Income risk level was determined by taking the percentage of cases from each income bracket, and multiplying it by 2.85 to scale it from 0-100.
+            The data was taken from the following dataset: <a href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/immunocompromised.html">HERE</a></p>
         <p> <strong>Location: </strong>Location risk level was determined by taking the “percentage of national cases” and multiplying it by 6
             to scale it from 0-100. This data can be found at our github repo <a href="https://github.com/thedestroyer4312/covid-data-challenge/tree/master/Cleaned%20Data">HERE</a> </p>
         <p> <strong>Occupation/Jobs: </strong> Risk Level was determined by each occupation ranking from 1-100 on risk of getting COVID-19. Similar occupations were averaged together to form categories,

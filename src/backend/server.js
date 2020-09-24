@@ -25,20 +25,24 @@ app.post('/testReadFile', function (request, response) {
         })
         .on('end', () => {
             let riskDataFile = JSON.parse(buf);
+
             let activityArr = request.body.activities;
+            let riskyBehavior = false;
             let riskLvl = 0;
             //search through the JSON for each activity's risk level.
             for(let task of activityArr) {
                 riskLvl = riskLvl + (riskDataFile["activityRisk"][task] * 20);
+                if(riskDataFile["activityRisk"][task] == 5) riskyBehavior = true;
             }
             let avgRisk = 0;
-            if(activityArr.length > 0) avgRisk = (riskLvl/activityArr.length).toFixed(2);
+            if(activityArr.length > 0) {
+                avgRisk = (riskLvl/activityArr.length).toFixed(2);
+                if(avgRisk >= 75) riskyBehavior = true;
+            }
 
             //ageRisk
             let ageRange = "";
             let userAge = request.body.age;
-
-			// Trevor's alternative: iterate through an array of age upper boundaries to find the age range
 			let ageRanges = [4, 17, 29, 39, 49, 64, 74, 84];
 			let lowerAge = null, upperAge = null;
 
@@ -71,6 +75,8 @@ app.post('/testReadFile', function (request, response) {
 
             let ageRisk = riskDataFile["ageRisk"][ageRange];
 
+            let sexRisk = riskDataFile["sexRisk"][request.body.sex];
+
             let raceFormatted = "";
             let raceRisk = riskDataFile["raceRisk"][request.body.race];
             if(request.body.race == 'white_hisp') raceFormatted = "White: Hispanic or Latino";
@@ -80,8 +86,9 @@ app.post('/testReadFile', function (request, response) {
             else if(request.body.race == 'indian_alaskaNative') raceFormatted = "American Indian/Alaskan Native";
             else if(request.body.race == 'pacificIslander') raceFormatted = "Native Hawaiian/Other Pacific Islander";
             else raceFormatted = "Multiple Race";
+            //if(location == MX) raceRisk = 0;
 
-            let incomeStrings = ["less than $15k", "$15k-$25k", "$25k-$35k", "$35k-$50k", "above $50k"];
+            let incomeStrings = ["less than $15,000", "$15,000-$25,000", "$25,000-$35,000", "$35,000-$50,000", "above $50,000"];
             let incomeID = parseInt(request.body.income.slice(-1), 10);
             let incomeFormatted = incomeStrings[incomeID];
             let incomeRisk = riskDataFile['incomeRisk'][request.body.income];
@@ -90,9 +97,10 @@ app.post('/testReadFile', function (request, response) {
 
             let jobRisk = riskDataFile['jobRisk'][request.body.job];
 
-            let maskResponses = ["always wearing one outside", "wearing one around people and indoors, but not outside", "only wearing masks sparingly", "never wearing a mask"];
+            let maskResponses = ["never wearing a mask", "wearing a mask"];
             let maskID = parseInt(request.body.mask.slice(-1), 10);
             let maskFormatted = maskResponses[maskID];
+            let maskRisk = riskDataFile['maskRisk'][request.body.mask];
 
             let socDistStrings = ["less than 1 meter/3 feet", "1 meter/3 feet", "2 meters/6 feet", "more than 2 meters/6 feet"];
             let socDistID = parseInt(request.body.socDist.slice(-1), 10);
@@ -104,20 +112,19 @@ app.post('/testReadFile', function (request, response) {
                 age: request.body.age,
                 ageRisk: ageRisk,
                 sex: request.body.sex,
-                sexRisk: 50.1,
+                sexRisk: sexRisk,
                 race: raceFormatted,
                 raceRisk: raceRisk,
                 income: incomeFormatted,
                 incomeRisk: incomeRisk,
                 location: request.body.location,
                 locationRisk: locationRisk,
-                familySize: request.body.familySize,
-                familySizeRisk: -1,
                 job: request.body.jobTitle,
                 jobRisk: jobRisk,
                 avgRisk: avgRisk,
+                activityRisk: riskyBehavior,
                 mask: maskFormatted,
-                maskRisk: -1,
+                maskRisk: maskRisk,
                 socDist: socDistFormatted,
                 socDistRisk: socDistRisk,
             };
