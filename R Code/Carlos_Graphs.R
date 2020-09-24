@@ -194,10 +194,9 @@ library(ggplot2)
 
 bpp<-ggplot(race, aes(x=Race.Ethnicity, y=Risk.Level, fill=Race.Ethnicity)) +
   geom_bar(stat="identity", color="black") +
-  xlab("State/Estado") + ylab("Risk Level/Nivel de Riesgo") + ylim(0, 100) +
-  labs(fill = "State/Estado") +
-  geom_hline(yintercept = median(dat2$Risk.Level), linetype = 'dashed') +
-  ggtitle("Risk Level in Western States/Nivel de Riesgo en E.E.U.U Occidental") 
+  xlab("Race/Ethnicity") + ylab("Risk Level") + ylim(0, 100) +
+  labs(fill = "Race/Ethnicity") +
+  ggtitle("Risk Level byt Race/Ethnicity (USA)") 
 bpp <- bpp+scale_fill_brewer(palette="Reds")
 bpp + theme(legend.position="top")
 bpp + theme(legend.position="bottom")
