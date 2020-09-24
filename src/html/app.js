@@ -33,7 +33,7 @@ async function printSurveyResponses() {
     };
 
     for(let factor of Object.keys(userData)) { //check if form is incomplete
-        if(userData[factor] == null || !userData[factor])
+        if(!userData[factor] || userData[factor] == null)
         {
             alert("Something in the form has not been filled out!" +"\n¡Algo en el formulario no se ha completado!");
             currentTab = 0;
@@ -42,7 +42,7 @@ async function printSurveyResponses() {
     }
 
     //debug console.log(userData);
-    await fetch(`${baseURL}/testReadFile`, {
+    await fetch(`${baseURL}/readFile`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -95,7 +95,32 @@ async function printSurveyResponses() {
             yesSD.style.display = "block";
         }
     })
-    .catch(error => console.log("API error: " + error));
+    .catch(error => console.error("API error: " + error));
+}
+
+/**
+ * Populates the locations datalist dropdown by retrieving the actual JSON file via a GET request to
+ * /readFile
+ */
+function populateLocations(){
+	fetch(`${baseURL}/readFile`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+	.then(response => response.json())
+	.then(riskDataObj => {
+		// the object is a plain JS object now, already destructured from JSON
+		let locationDataObj = riskDataObj.locationRisk;
+		let datalist = document.getElementById('locationList');
+		let str = '';
+		for(let loc in locationDataObj){
+			str += `<option value="${loc}">`;
+		}
+		datalist.innerHTML = str;
+	})
+	.catch(error => console.error("API error: " + error));
 }
 
 ////////////////////////////////////////////////////
