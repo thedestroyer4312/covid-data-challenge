@@ -13,7 +13,7 @@ async function printSurveyResponses() {
     try {
         let jobTitle = document.getElementById(`${formData.get('job')}`).labels[0].textContent;
     } catch (error) {
-        alert("Something in the form has not been filled out!");
+        alert("Something in the form has not been filled out!" +"\n¡Algo en el formulario no se ha completado!");
         currentTab = 0;
         return;
     }
@@ -35,7 +35,7 @@ async function printSurveyResponses() {
     for(let factor of Object.keys(userData)) { //check if form is incomplete
         if(userData[factor] == null || !userData[factor])
         {
-            alert("Something in the form has not been filled out!"); //spanish here!
+            alert("Something in the form has not been filled out!" +"\n¡Algo en el formulario no se ha completado!");
             currentTab = 0;
             return;
         }
