@@ -188,7 +188,7 @@ bp5
 ########################################################################################################
 
 ## Cases by Race/Ethnicity in the USA
-race <- read.csv('cases_by_race_usa.csv')
+race <- read.csv('cases_by_race_usa_final.csv')
 
 library(ggplot2)
 
@@ -196,7 +196,7 @@ bpp<-ggplot(race, aes(x=Race.Ethnicity, y=Risk.Level, fill=Race.Ethnicity)) +
   geom_bar(stat="identity", color="black") +
   xlab("Race/Ethnicity") + ylab("Risk Level") + ylim(0, 100) +
   labs(fill = "Race/Ethnicity") +
-  ggtitle("Risk Level byt Race/Ethnicity (USA)") 
+  ggtitle("Risk Level by Race/Ethnicity (USA)") 
 bpp <- bpp+scale_fill_brewer(palette="Reds")
 bpp + theme(legend.position="top")
 bpp + theme(legend.position="bottom")
