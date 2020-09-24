@@ -185,7 +185,23 @@ bp5 + theme(legend.position="top")
 bp5 + theme(legend.position="bottom")
 bp5
 
+########################################################################################################
 
+## Cases by Race/Ethnicity in the USA
+race <- read.csv('cases_by_race_usa.csv')
+
+library(ggplot2)
+
+bpp<-ggplot(race, aes(x=Race.Ethnicity, y=Risk.Level, fill=Race.Ethnicity)) +
+  geom_bar(stat="identity", color="black") +
+  xlab("State/Estado") + ylab("Risk Level/Nivel de Riesgo") + ylim(0, 100) +
+  labs(fill = "State/Estado") +
+  geom_hline(yintercept = median(dat2$Risk.Level), linetype = 'dashed') +
+  ggtitle("Risk Level in Western States/Nivel de Riesgo en E.E.U.U Occidental") 
+bpp <- bpp+scale_fill_brewer(palette="Reds")
+bpp + theme(legend.position="top")
+bpp + theme(legend.position="bottom")
+bpp
 
 
 
