@@ -13,6 +13,32 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+input[type=range] {
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: none;
+    width: 35%;
+    height: 14px;
+    background: gainsboro;
+    outline-color: steelblue;
+}
+
+input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  pointer-events: none;
+  width: 8px;
+  height: 14px;
+  background: indianred;
+}
+
+input::-moz-range-thumb {
+  pointer-events: none;
+  width: 8px;
+  height: 8px;
+  background: indianred;
+}
+
 #userInput {
   background-color: aliceblue;
   margin: 25px auto;

@@ -29,6 +29,7 @@ async function printSurveyResponses() {
         mask: formData.get("mask"),
         handwash: formData.get("handwash"), //only if theres data.
         socDist: formData.get("socDist"),
+        lastCheckbox: formData.get("legalBox")
     };
 
     for(let factor of Object.keys(userData)) { //check if form is incomplete
@@ -56,6 +57,8 @@ async function printSurveyResponses() {
             let id = key + "User";
             if(key == 'activityRisk') continue;
             document.getElementById(id).innerHTML = data[key];
+            let sliderID = document.getElementById(key + "Slider");
+            if(sliderID != null) sliderID.value = data[key];
         }
 
         //display tips depending on what choices the user made.
