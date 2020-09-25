@@ -128,3 +128,11 @@ button {
 button:hover {
     cursor: pointer;
 }
+
+select{
+	background-color: white;
+}
+
+select option{
+	background-color: white;
+}

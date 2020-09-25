@@ -15,7 +15,32 @@ const storage = new Storage({
     keyFilename: process.env.PATHTOFILE
 });
 
-app.post('/testReadFile', function (request, response) {
+/**
+ * GET - Returns the json file
+ *
+ */
+app.get('/getDataFile', function(request, response){
+	const file = storage.bucket('processed_data-cv19dc').file('allDataJson.json');
+    let buf = '';
+    file.createReadStream()
+        .on('data', (rawData) => {
+            //read the file from the stream
+            buf = buf + rawData;
+        })
+        .on('end', () => {
+			// send the buffer, which is a JSON formatted string
+			response.send(buf);
+		})
+		.on('error', () => {
+			return console.error("ERROR");
+		})
+});
+
+/**
+ * POST - Receives user data and processes it, returning a json of risk factors.
+ *
+ */
+app.post('/processData', function (request, response) {
     const file = storage.bucket('processed_data-cv19dc').file('allDataJson.json');
     let buf = '';
     file.createReadStream()
@@ -65,10 +90,10 @@ app.post('/testReadFile', function (request, response) {
 			}
 
 			// now, calculate our age based on our range
-			if(!lowerAge){ 	// first, the edge case for 0-4 years old
-			    ageRange = "0-4";
-			}else if(!upperAge) { // second edge case: over 85 years old
-				ageRange = "85+";
+			if(!lowerAge){ 	// first, the edge case for the lowest age (0-lowest)
+			    ageRange = `0-${ageRanges[0]}`;
+			}else if(!upperAge) { // second edge case: maximum age
+				ageRange = `${ageRanges[ageRanges.length - 1] + 1}+`;
 			}else {
 				ageRange = `${lowerAge + 1}-${upperAge}`;
 			}
