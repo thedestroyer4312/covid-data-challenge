@@ -162,11 +162,13 @@ function nextPrev(n) {
     if (currentTab == x.length - 1) {
         //display results here!
         printSurveyResponses();
+		showGraphs(true);
     }
     if( currentTab >= x.length) {
         //reset
         document.getElementById("userInput").reset();
         currentTab = 0;
+		showGraphs(false);
     }
     // Otherwise, display the correct tab:
     showTab(currentTab);
@@ -180,4 +182,11 @@ function fixStepIndicator(n) {
     }
     //... and adds the "active" class to the current step:
     x[n].className += " active";
+}
+
+function showGraphs(indicator){
+	images = document.getElementsByClassName('image');
+	for(let image of images){
+		image.style.display = (indicator === true) ? 'block' : 'none';
+	}
 }
