@@ -278,19 +278,19 @@
             <strong>Edad:</strong> <br>
             Your age is <span id="ageUser"></span>, which has a risk level of <span id="ageRiskUser"></span> <br>
             <label for="ageRiskSlider">1 (riesgo bajo)</label> <input type="range" id="ageRiskSlider" name="ageRiskSlider" min="0" max="100"> <label for="ageRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/Age US.jpg" alt="us age" class="image"> <br>
-			<img src="../../Graphs/Age Mexico.jpg" alt="mexico age" class="image"> <br>
+			<img src="../../Graphs/Age US.jpg" id="us_age" alt="us age" class="usa" height="500">
+			<img src="../../Graphs/Age Mexico.jpg" id="mexico_age" alt="mexico age" class="mexico" height="500"> <br>
 
             <strong>Sexo:</strong> <br>
             Your sex is <span id="sexUser"></span>, which has a risk level of <span id="sexRiskUser"></span> <br>
             <label for="sexRiskSlider">1 (riesgo bajo)</label> <input type="range" id="sexRiskSlider" name="sexRiskSlider" min="0" max="100"> <label for="sexRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/SexMexico.jpg" alt="mexico sex" class="image" height="500"> <br>
-			<img src="../../Graphs/SexUSA.jpg" alt="usa sex" class="image" height="500"> <br>
+			<img src="../../Graphs/SexMexico.jpg" id="mexico_sex" alt="mexico sex" class="mexico" height="500">
+			<img src="../../Graphs/SexUSA.jpg" id="usa_sex" alt="usa sex" class="usa" height="500"> <br>
 
             <strong>Race:</strong> <br>
             Your race is <span id="raceUser"></span>, which has a risk level of <span id="raceRiskUser"></span> <br>
             <label for="raceRiskSlider">1 (riesgo bajo)</label> <input type="range" id="raceRiskSlider" name="raceRiskSlider" min="0" max="100"> <label for="raceRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/COVID-Race-Ethnicity.png" alt="race and ethnicity" class="image" height="500"> <br>
+			<img src="../../Graphs/COVID-Race-Ethnicity.png" id="usa_race" alt="race and ethnicity" class="usa" height="500"> <br>
 
             <strong>Income:</strong> <br>
             Your income is <span id="incomeUser"></span>, which has a risk level of <span id="incomeRiskUser"></span> <br>
@@ -300,17 +300,17 @@
             <strong>Hogar y ubicación:</strong> <br>
             You live in <span id="locationUser"></span>, which has a risk level of <span id="locationRiskUser"></span> <br>
             <label for="locationRiskSlider">1 (riesgo bajo)</label> <input type="range" id="locationRiskSlider" name="locationRiskSlider" min="0" max="100"> <label for="locationRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/COVID Cases-Atlantic Seaboard.png" alt="atlantic seaboard cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID Cases-Midwest.png" alt="midwest cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID Cases-Mountain.png" alt="mountain cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID Cases-New England.png" alt="new england cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID Cases-Sunbelt.png" alt="sunbelt cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID Cases-Western USA.png" alt="western usa cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID_MEXICO_WEST.png" alt="west mexico cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID-MX-CENTRAL.png" alt="central mexico cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID-MX-NORTHEAST.png" alt="northeast mexico cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID-MX-NORTHWEST.png" alt="northwest mexico cases" class="image" height="500"> <br>
-			<img src="../../Graphs/COVID-MX-Southeast.png" alt="southeast mexico cases" class="image" height="500"> <br>
+			<img src="../../Graphs/COVID Cases-Atlantic Seaboard.png" alt="atlantic seaboard cases" class="region" height="500" id="region_atlantic_seaboard">
+			<img src="../../Graphs/COVID Cases-Midwest.png" alt="midwest cases" class="region" height="500" id="region_midwest">
+			<img src="../../Graphs/COVID Cases-Mountain.png" alt="mountain cases" class="region" height="500" id="region_mountain">
+			<img src="../../Graphs/COVID Cases-New England.png" alt="new england cases" class="region" height="500" id="region_new_england">
+			<img src="../../Graphs/COVID Cases-Sunbelt.png" alt="sunbelt cases" class="region" height="500" id="region_sunbelt">
+			<img src="../../Graphs/COVID Cases-Western USA.png" alt="western usa cases" class="region" height="500" id="region_western_usa">
+			<img src="../../Graphs/COVID_MEXICO_WEST.png" alt="west mexico cases" class="region" height="500" id="region_west_mexico">
+			<img src="../../Graphs/COVID-MX-CENTRAL.png" alt="central mexico cases" class="region" height="500" id="region_central_mexico">
+			<img src="../../Graphs/COVID-MX-NORTHEAST.png" alt="northeast mexico cases" class="region" height="500" id="region_northeast_mexico">
+			<img src="../../Graphs/COVID-MX-NORTHWEST.png" alt="northwest mexico cases" class="region" height="500" id="region_northwest_mexico">
+			<img src="../../Graphs/COVID-MX-Southeast.png" alt="southeast mexico cases" class="region" height="500" id="region_southeast_mexico"> <br>
 
             <strong>Trabajo:</strong> <br>
             You said your job is <span id="jobUser"></span>, which has a risk level of <span id="jobRiskUser"></span><br>
@@ -324,7 +324,7 @@
 
             <strong>Hábito de máscara:</strong> <br>
             You said your mask habit is <span id="maskUser"></span>, which has a risk level of <span id="maskRiskUser"></span> <br>
-            <label for="maskRiskSlider">1 (riesgo bajo)</label> <input type="range" id="maskRiskSlider" name="maskRiskSlider" min="0" max="20"> <label for="maskRiskSlider">20 (alto riesgo)</label>
+            <label for="maskRiskSlider">1 (riesgo bajo)</label> <input type="range" id="maskRiskSlider" name="maskRiskSlider" min="0" max="20"> <label for="maskRiskSlider">20 (alto riesgo)</label> <br>
 			<img src="../../Graphs/Mask Risk Graph copy.png" alt="mask risk" class="image" height="500"> <br>
 
             <strong>distanciamiento social:</strong> <br>

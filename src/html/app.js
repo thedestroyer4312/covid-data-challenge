@@ -61,7 +61,120 @@ async function printSurveyResponses() {
             let sliderID = document.getElementById(key + "Slider");
             if(sliderID != null) sliderID.value = data[key];
         }
-
+		
+		// display region
+		let regionImages = document.getElementsByClassName('region');
+		for(let image of regionImages){
+			image.style.display = 'none';
+		}
+		if(data.location.substring(0, 2) === "MX"){
+			// show/hide based on usa/mexico
+			document.getElementById('us_age').style.display = 'none';
+			document.getElementById('usa_sex').style.display = 'none';
+			document.getElementById('usa_race').style.display = 'none';
+			document.getElementById('mexico_age').style.display = 'block';
+			document.getElementById('mexico_sex').style.display = 'block';
+			
+			switch(data.location.substring(3)){
+				case 'BC':
+				case 'BS':
+				case 'CH':
+				case 'SI':
+				case 'SO':
+					document.getElementById('region_northwest_mexico').style.display = 'block';
+					break;
+				case 'CO':
+				case 'DG':
+				case 'NL':
+				case 'SL':
+				case 'TM':
+					document.getElementById('region_northeast_mexico').style.display = 'block';
+					break;
+				case 'DF':
+				case 'EM':
+				case 'GR':
+				case 'HG':
+				case 'MO':
+				case 'PU':
+				case 'TL':
+					document.getElementById('region_central_mexico').style.display = 'block';
+					break;
+				case 'CM':
+				case 'CS':
+				case 'OA':
+				case 'QR':
+				case 'TB':
+				case 'VE':
+				case 'YU':
+					document.getElementById('region_southeast_mexico').style.display = 'block';
+					break;
+				default:
+					document.getElementById('region_west_mexico').style.display = 'block';
+			}
+		}else{
+			document.getElementById('us_age').style.display = 'block';
+			document.getElementById('usa_sex').style.display = 'block';
+			document.getElementById('usa_race').style.display = 'block';
+			document.getElementById('mexico_age').style.display = 'none';
+			document.getElementById('mexico_sex').style.display = 'none';
+			switch(data.location.substring(3)){
+				case 'DE':
+				case 'DC':
+				case 'ME':
+				case 'NJ':
+				case 'NY':
+				case 'NC':
+				case 'PA':
+				case 'SC':
+				case 'VA':
+				case 'WV':
+					document.getElementById('region_atlantic_seaboard').style.display = 'block';
+					break;
+				case 'AL':
+				case 'FL':
+				case 'GA':
+				case 'LA':
+				case 'MS':
+				case 'NM':
+				case 'OK':
+				case 'TN':
+				case 'TX':
+					document.getElementById('region_sunbelt').style.display = 'block';
+					break;
+				case 'AR':
+				case 'IL':
+				case 'IN':
+				case 'IA':
+				case 'KY':
+				case 'MI':
+				case 'MN':
+				case 'MO':
+				case 'OH':
+				case 'WI':
+					document.getElementById('region_midwest').style.display = 'block';
+					break;
+				case 'CT':
+				case 'ME':
+				case 'MA':
+				case 'NH':
+				case 'RI':
+				case 'VT':
+					document.getElementById('region_new_england').style.display = 'block';
+					break;
+				case 'AK':
+				case 'AZ':
+				case 'CA':
+				case 'HI':
+				case 'NV':
+				case 'OR':
+				case 'WA':
+					document.getElementById('region_western_usa').style.display = 'block';
+					break;
+				default:
+					document.getElementById('region_mountain').style.display = 'block';
+			}
+		}
+		
         //display tips depending on what choices the user made.
         let hra = document.getElementById('highRiskActivity');
         let lra = document.getElementById('lowRiskActivity');
@@ -162,13 +275,11 @@ function nextPrev(n) {
     if (currentTab == x.length - 1) {
         //display results here!
         printSurveyResponses();
-		showGraphs(true);
     }
     if( currentTab >= x.length) {
         //reset
         document.getElementById("userInput").reset();
         currentTab = 0;
-		showGraphs(false);
     }
     // Otherwise, display the correct tab:
     showTab(currentTab);
@@ -182,11 +293,4 @@ function fixStepIndicator(n) {
     }
     //... and adds the "active" class to the current step:
     x[n].className += " active";
-}
-
-function showGraphs(indicator){
-	images = document.getElementsByClassName('image');
-	for(let image of images){
-		image.style.display = (indicator === true) ? 'block' : 'none';
-	}
 }
