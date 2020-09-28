@@ -31,8 +31,8 @@ app.get('/getDataFile', function(request, response){
 			// send the buffer, which is a JSON formatted string
 			response.send(buf);
 		})
-		.on('error', () => {
-			return console.error("ERROR");
+		.on('error', (error) => {
+			return console.error("ERROR" + error);
 		})
 });
 
@@ -136,7 +136,7 @@ app.post('/processData', function (request, response) {
             let respJSON = {
                 age: request.body.age,
                 ageRisk: ageRisk,
-                sex: request.body.sex,
+                sex: request.body.sex.slice(0, -2),
                 sexRisk: sexRisk,
                 race: raceFormatted,
                 raceRisk: raceRisk,
@@ -156,8 +156,8 @@ app.post('/processData', function (request, response) {
             response.header("Access-Control-Allow-Origin", "*");
             response.send(respJSON);
         })
-        .on('error', () => {
-            return console.error("ERROR");
+        .on('error', (error) => {
+            return console.error("ERROR" + error);
         });
 });
 

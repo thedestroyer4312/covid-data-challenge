@@ -39,28 +39,28 @@
                     <label for="other">Prefiero no responder</label>
                 </div> </p>
 
-                <p>What is your race?
+                <p>¿Cuál es su raza?
                     <div>
                         <input type="radio" id="race_white_hisp" name="race" value="white_hisp" required>
-                        <label for="race_white_hisp">White: Hispanic or Latino</label> <br>
+                        <label for="race_white_hisp">Blanco: hispano o latino</label> <br>
                         <input type="radio" id="race_white_nonHisp" name="race" value="white_nonHisp" required>
-                        <label for="race_white_nonHisp">White: Non-Hispanic</label> <br>
+                        <label for="race_white_nonHisp">Blanco: no hispano</label> <br>
                         <input type="radio" id="race_black" name="race" value="black" required>
-                        <label for="race_black">Black/African American</label> <br>
+                        <label for="race_black">Negro / afroamericano</label> <br>
                         <input type="radio" id="race_asian" name="race" value="asian" required>
-                        <label for="race_asian">Asian</label> <br>
+                        <label for="race_asian">asiático</label> <br>
                         <input type="radio" id="race_indian_alaskaNative" name="race" value="indian_alaskaNative" required>
-                        <label for="race_indian_alaskaNative">American Indian/Alaskan Native</label> <br>
+                        <label for="race_indian_alaskaNative">Indio americano / nativo de Alaska</label> <br>
                         <input type="radio" id="race_pacificIslander" name="race" value="pacificIslander" required>
-                        <label for="race_pacificIslander">Native Hawaiian/Other Pacific Islander</label> <br>
+                        <label for="race_pacificIslander"> Nativo de Hawái / otras islas del Pacífico</label> <br>
                         <input type="radio" id="multiRace" name="race" value="multiRace" required>
-                        <label for="multiRace">Multiple Race</label> <br>
+                        <label for="multiRace"> Raza múltiple</label> <br>
                     </div> </p>
 
-                    <p>Select the option that most describes your household income.
+                    <p>Seleccione la opción que mejor describa los ingresos de su hogar.
                         <div>
                             <input type="radio" id="income1" name="income" value="income0" required>
-                            <label for="income1">Less than $15,000</label>
+                            <label for="income1">Menos de $15,000</label>
                         </div>
                         <div>
                             <input type="radio" id="income2" name="income" value="income1" required>
@@ -76,7 +76,7 @@
                         </div>
                         <div>
                             <input type="radio" id="income5" name="income" value="income4" required>
-                            <label for="income5">$50,000 or more</label>
+                            <label for="income5">$50,000 o más</label>
                         </div></p>
 
                     </div>
@@ -267,7 +267,7 @@
             </div> </p>
 
                 <input type="checkbox" id="legalBox" name="legalBox" value="legalBox" required>
-                <label for="legalBox">I am aware that any results given to me when I submit the form are not medical advice, nor can the advice or suggestions given be used to diagnose, treat, cure, or prevent any disease.</label>
+                <label for="legalBox">Soy consciente de que los resultados que recibo cuando envío el formulario no son consejos médicos, ni los consejos o sugerencias dados pueden utilizarse para diagnosticar, tratar, curar o prevenir ninguna enfermedad</label>
         </div>
 
         <div class="tab"> <h1>Resultados:</h1>
@@ -276,60 +276,83 @@
             <p>PLEASE NOTE: These results are not a diagnosis of, or a test for, COVID19. This data could be innacurate and is simply used as a suggestion.</p>
 
             <strong>Edad:</strong> <br>
-            Your age is <span id="ageUser"></span>, which has a risk level of <span id="ageRiskUser"></span> <br>
+            Su edad es <span id="ageUser"></span>, que tiene un nivel de riesgo de <span id="ageRiskUser"></span> <br>
             <label for="ageRiskSlider">1 (riesgo bajo)</label> <input type="range" id="ageRiskSlider" name="ageRiskSlider" min="0" max="100"> <label for="ageRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/Age US.jpg" id="us_age" alt="us age" class="usa" height="500">
-			<img src="../../Graphs/Age Mexico.jpg" id="mexico_age" alt="mexico age" class="mexico" height="500"> <br>
+            <div id="us_age">
+                <img src="Age US.jpg" alt="us age" class="usa" height="500"> <br>
+                Los datos del nivel de riesgo por edad muestran que las personas de 18 a 29 años tienen un mayor riesgo de contraer COVID-19 en EE.UU, y el grupo de edad con menor riesgo son los de 0 a 4 años.
+            </div> <br>
+            <div id="mexico_age">
+                <img src="Age Mexico.jpg" alt="mexico age" class="mexico" height="500"> <br>
+                Los datos del nivel de riesgo por edad muestran que las personas de 35 a 39 años tienen un mayor riesgo de contraer COVID-19 en México, y el grupo de edad con menos riesgo es el de 95 a 99 años.
+            </div> <br>
 
             <strong>Sexo:</strong> <br>
-            Your sex is <span id="sexUser"></span>, which has a risk level of <span id="sexRiskUser"></span> <br>
+            Su sexo es <span id="sexUser"></span>, que tiene un nivel de riesgo de <span id="sexRiskUser"></span> <br>
             <label for="sexRiskSlider">1 (riesgo bajo)</label> <input type="range" id="sexRiskSlider" name="sexRiskSlider" min="0" max="100"> <label for="sexRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/SexMexico.jpg" id="mexico_sex" alt="mexico sex" class="mexico" height="500">
-			<img src="../../Graphs/SexUSA.jpg" id="usa_sex" alt="usa sex" class="usa" height="500"> <br>
+			<img src="SexMexico.jpg" id="mexico_sex" alt="mexico sex" class="mexico" height="500">
+			<img src="SexUSA.jpg" id="usa_sex" alt="usa sex" class="usa" height="500"> <br>
 
-            <strong>Race:</strong> <br>
-            Your race is <span id="raceUser"></span>, which has a risk level of <span id="raceRiskUser"></span> <br>
+            <strong>Raza:</strong> *estadísticas en relación con raza aplican solamente a vivientes en EE.UU <br>
+            Su raza es <span id="raceUser"></span>, que tiene un nivel de riesgo de <span id="raceRiskUser"></span> <br>
             <label for="raceRiskSlider">1 (riesgo bajo)</label> <input type="range" id="raceRiskSlider" name="raceRiskSlider" min="0" max="100"> <label for="raceRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/COVID-Race-Ethnicity.png" id="usa_race" alt="race and ethnicity" class="usa" height="500"> <br>
+            <div id="usa_race">
+                <img src="COVID-Race-Ethnicity.png" alt="race and ethnicity" class="usa" height="500"> <br>
+                Los datos muestran la distribución del nivel de riesgo de COVID-19 en diferentes razas / etnias en los EE. UU.
+                Los nativos de Hawái / las islas del Pacífico, así como los indios americanos / nativos de Alaska, son los grupos con mayor riesgo de contraer COVID-19.
+            </div> <br> <br>
 
-            <strong>Income:</strong> <br>
-            Your income is <span id="incomeUser"></span>, which has a risk level of <span id="incomeRiskUser"></span> <br>
+            <strong>Ingresos:</strong> *estadísticas en relación con ingresos aplican solamente a vivientes en EE.UU <br>
+            Su ingresos son <span id="incomeUser"></span>, que tiene un nivel de riesgo de <span id="incomeRiskUser"></span> <br>
             <label for="incomeRiskSlider">1 (riesgo bajo)</label> <input type="range" id="incomeRiskSlider" name="incomeRiskSlider" min="0" max="100"> <label for="incomeRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/Income Graph.png" alt="income" class="image" height="500"> <br>
+            <div id="usa_income">
+                <img src="Income Graph.png"  alt="income" class="image" height="500"> <br>
+                El nivel de riesgo basado en los ingresos muestra que, estadísticamente, las personas con un nivel de ingresos más bajo tienen más riesgo de contraer COVID-19.
+                Esto podría deberse a varias razones, incluida la falta de recursos para protegerse del COVID-19.
+            </div> <br> <br>
 
             <strong>Hogar y ubicación:</strong> <br>
-            You live in <span id="locationUser"></span>, which has a risk level of <span id="locationRiskUser"></span> <br>
+            Usted indicó que vive en  <span id="locationUser"></span>, que tiene un nivel de riesgo de <span id="locationRiskUser"></span> <br>
             <label for="locationRiskSlider">1 (riesgo bajo)</label> <input type="range" id="locationRiskSlider" name="locationRiskSlider" min="0" max="100"> <label for="locationRiskSlider">100 (alto riesgo)</label>
-			<img src="../../Graphs/COVID Cases-Atlantic Seaboard.png" alt="atlantic seaboard cases" class="region" height="500" id="region_atlantic_seaboard">
-			<img src="../../Graphs/COVID Cases-Midwest.png" alt="midwest cases" class="region" height="500" id="region_midwest">
-			<img src="../../Graphs/COVID Cases-Mountain.png" alt="mountain cases" class="region" height="500" id="region_mountain">
-			<img src="../../Graphs/COVID Cases-New England.png" alt="new england cases" class="region" height="500" id="region_new_england">
-			<img src="../../Graphs/COVID Cases-Sunbelt.png" alt="sunbelt cases" class="region" height="500" id="region_sunbelt">
-			<img src="../../Graphs/COVID Cases-Western USA.png" alt="western usa cases" class="region" height="500" id="region_western_usa">
-			<img src="../../Graphs/COVID_MEXICO_WEST.png" alt="west mexico cases" class="region" height="500" id="region_west_mexico">
-			<img src="../../Graphs/COVID-MX-CENTRAL.png" alt="central mexico cases" class="region" height="500" id="region_central_mexico">
-			<img src="../../Graphs/COVID-MX-NORTHEAST.png" alt="northeast mexico cases" class="region" height="500" id="region_northeast_mexico">
-			<img src="../../Graphs/COVID-MX-NORTHWEST.png" alt="northwest mexico cases" class="region" height="500" id="region_northwest_mexico">
-			<img src="../../Graphs/COVID-MX-Southeast.png" alt="southeast mexico cases" class="region" height="500" id="region_southeast_mexico"> <br>
+			<img src="COVID Cases-Atlantic Seaboard.png" alt="atlantic seaboard cases" class="region" height="500" id="region_atlantic_seaboard">
+			<img src="COVID Cases-Midwest.png" alt="midwest cases" class="region" height="500" id="region_midwest">
+			<img src="COVID Cases-Mountain.png" alt="mountain cases" class="region" height="500" id="region_mountain">
+			<img src="COVID Cases-New England.png" alt="new england cases" class="region" height="500" id="region_new_england">
+			<img src="COVID Cases-Sunbelt.png" alt="sunbelt cases" class="region" height="500" id="region_sunbelt">
+			<img src="COVID Cases-Western USA.png" alt="western usa cases" class="region" height="500" id="region_western_usa">
+			<img src="COVID_MEXICO_WEST.png" alt="west mexico cases" class="region" height="500" id="region_west_mexico">
+			<img src="COVID-MX-CENTRAL.png" alt="central mexico cases" class="region" height="500" id="region_central_mexico">
+			<img src="COVID-MX-NORTHEAST.png" alt="northeast mexico cases" class="region" height="500" id="region_northeast_mexico">
+			<img src="COVID-MX-NORTHWEST.png" alt="northwest mexico cases" class="region" height="500" id="region_northwest_mexico">
+			<img src="COVID-MX-Southeast.png" alt="southeast mexico cases" class="region" height="500" id="region_southeast_mexico"> <br>
 
             <strong>Trabajo:</strong> <br>
-            You said your job is <span id="jobUser"></span>, which has a risk level of <span id="jobRiskUser"></span><br>
+            Su ocupación es <span id="jobUser"></span>, que tiene un nivel de riesgo de <span id="jobRiskUser"></span><br>
             <label for="jobRiskSlider">1 (riesgo bajo)</label> <input type="range" id="jobRiskSlider" name="jobRiskSlider" min="0" max="100"> <label for="jobRiskSlider">100 (alto riesgo)</label> <br>
-			<img src="../../Graphs/Occupation risk graph copy.jpg" alt="occupation risk" class="image" height="500"> <br>
+			<img src="occupation_risk.jpg" alt="occupation risk" class="image" height="500"> <br>
+            Las carreras más peligrosas son las que involucran el contacto con pacientes potencialmente positivos a COVID-19 en el campo médico. Sin embargo, la mayoría de las
+            carreras que no están en el campo médico tienen un riesgo por debajo de los 50, y las carreras que involucran más interacción humana son más peligrosas. <br>
+            Visite <strong>Métodos</strong> para ver una imagen de mayor calidad <br> <br>
 
             <strong>Conducta:</strong> <br>
-            Your average risk level from activities is <span id = "avgRiskUser"></span> <br>
+            El nivel de riesgo promedial de sus actividades es <span id = "avgRiskUser"></span> <br>
             <label for="avgRiskSlider">1 (riesgo bajo)</label> <input type="range" id="avgRiskSlider" name="avgRiskSlider" min="0" max="100"> <label for="avgRiskSlider">100 (alto riesgo)</label> <br>
-			<img src="../../Graphs/Activity Chart.png" alt="activity chart" class="image" height="500"> <br>
+			<img src="Activity Chart.png" alt="activity chart" class="image" height="500"> <br>
+            Las actividades que involucran más interacción humana generalmente implican más riesgo. Por ejemplo, conseguir comida para llevar en un restaurante implica un contacto limitado con una persona como máximo,
+            mientras que comer en un buffet implica que muchas personas compartan la comida, toquen los mismos utensilios para servir y respiren el mismo aire. <br> <br>
 
             <strong>Hábito de máscara:</strong> <br>
-            You said your mask habit is <span id="maskUser"></span>, which has a risk level of <span id="maskRiskUser"></span> <br>
+            Usted indicó que <span id="maskUser"></span>, que tiene un nivel de riesgo de <span id="maskRiskUser"></span> <br>
             <label for="maskRiskSlider">1 (riesgo bajo)</label> <input type="range" id="maskRiskSlider" name="maskRiskSlider" min="0" max="20"> <label for="maskRiskSlider">20 (alto riesgo)</label> <br>
-			<img src="../../Graphs/Mask Risk Graph copy.png" alt="mask risk" class="image" height="500"> <br>
+			<img src="Mask Risk Graph copy.png" alt="mask risk" class="image" height="500"> <br>
+            Las mascarillas reducen significativamente el riesgo de contraer COVID-19 por más de 80%. Para reducir el riesgo de contraer COVID-19, recomendamos el uso de mascarillas y cubrimientos faciales.
+            Según los datos de COVID-19, se muestra que el uso de mascarillas reduce drásticamente las tasas de infección. <br> <br>
 
             <strong>distanciamiento social:</strong> <br>
-            You said you maintain an average distance of <span id="socDistUser"></span> from others, which has a risk level in the range of <span id="socDistRiskUser"></span> <br>
-			<img src="../../Graphs/Social Distancing.jpg" alt="social distancing" class="image" height="500"> <br>
+            Usted indicó que mantiene una distancia de <span id="socDistUser"></span> que tiene un nivel de riesgo de <span id="socDistRiskUser"></span> <br>
+			<img src="Social Distancing.jpg" alt="social distancing" class="image" height="500"> <br>
+            El distanciamiento social reduce significativamente el riesgo de contraer COVID-19. El gráfico muestra el porcentaje de riesgo, así como el rango de riesgo que una persona podría tener para contraer COVID-19 según la distancia.
+             Cuanto más cerca está un individuo en promedio de otra persona, más probabilidades hay de que contraiga COVID-19. <br>
 
             <h2>Enmiendas de hábitos:</h2>
 

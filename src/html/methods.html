@@ -16,6 +16,7 @@
         </div>
 
         <h2>Methods</h2>
+        <h3> <strong>ENGLISH</strong></h3>
         <p>Here are the methods used to calculate risk scores found in the quiz.</p>
 
         <p><strong>Age: </strong>Age risk level was determined by taking the “percentage” value and multiplying it by 4.4 to scale it from 0-100.
@@ -41,6 +42,32 @@
         <p> <strong>Social Distancing: </strong>Social Distancing risk level was calculated based on distance. For each meter of distancing between two people was a range (from low to high) of risk that the individual would have.
             The data was pulled from the following website. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31142-9/fulltext"> HERE </a> <br>
             The user answered based on average distance from other people, and each distance is correlated to a range of risk. </p>
+
+        <h3><strong>SPANISH</strong></h3>
+        <p><strong>Age: </strong>El nivel de riesgo por edad se determinó como una proporción del total de casos de COVID-19 en México, en una escala de 0 a 100.
+            Los datos se tomaron del siguiente conjunto de datos: <a href="https://coronavirus.gob.mx/datos/">HERE</a> </p>
+        <p><strong>Race: </strong>El nivel de riesgo racial se determinó como una proporción de casos de COVID-19 per cápita (para cadas diferentes razas / etnias), en una escala de 0 a 100.
+            Los datos se tomaron de los siguientes conjuntos de datos: <a href="https://covid.cdc.gov/covid-data-tracker/#demographics">HERE</a></p>
+        <p> <strong>Sex: </strong> El nivel de riesgo por género se calculó con base en los datos del siguiente sitio web. <a href="https://coronavirus.gob.mx/datos/">HERE</a>.
+            Population was taken from <a href="https://www.statista.com/statistics/901177/mexico-total-population-number-gender/"> HERE</a>. Luego, los cocientes se escalaron de 0 a 100</p>
+        <p> <strong>Income:</strong> El nivel de riesgo de ingresos se determinó tomando el porcentaje de casos de cada rango de ingresos y multiplicándolo por 2,85 para escalarlo de 0 a 100.
+            Los datos se tomaron del siguiente conjunto de datos: <a href="https://www.cdc.gov/coronavirus/2019-ncov/need-extra-precautions/immunocompromised.html">HERE</a></p>
+        <p> <strong>Location: </strong>El nivel de riesgo de ubicación se determinó como una proporción de casos per cápita para los 50 estados de EE. UU.
+            (Incluido DC) y 31 estados mexicanos (incluido el Distrito Federal), en una escala de 0 a 100. <br> Los datos se tomaron de los siguientes conjuntos de datos:
+            <a href="https://github.com/thedestroyer4312/covid-data-challenge/tree/master/Cleaned%20Data">HERE</a> </p>
+        <p> <strong>Occupation/Jobs: </strong> El nivel de riesgo fue determinado por cada ocupación clasificada del 0 al 100 en el riesgo de contraer COVID-19.
+            Las ocupaciones similares se promediaron juntas para formar categorías, y se supone que todos los demás trabajos no mencionados tienen un nivel promedio de 23.
+            Los datos se tomaron del siguiente conjunto de datos: <a href="https://www.visualcapitalist.com/the-front-line-visualizing-the-occupations-with-the-highest-covid-19-risk/">HERE</a> <br>
+        <p> <strong>Activity risk: </strong>Las actividades se categorizaron según un riesgo del 1 al 5 y luego se expandieron para ajustarse a la escala del 1 al 100.
+            Estas actividades se categorizaron según los datos del siguiente sitio web: <a href="https://hartfordhealthcare.org/about-us/news-press/news-detail?articleid=26936&publicId=395">HERE</a> <br>
+            El usuario marcó la casilla junto a cada actividad en la que participó en las últimas dos semanas, y los riesgos de la actividad se promediaron juntos para formar una puntuación del riesgo de actividad general del usuario. </p>
+        <p> <strong>Mask wearing: </strong> El nivel de riesgo de la máscara se calculó en base a los datos del siguiente sitio
+             web que indicaba la tasa de transmisión de COVID-19 en función de si una persona usaba o no una máscara. <a href="https://www.livescience.com/face-masks-eye-protection-covid-19-prevention.html">HERE</a></p>
+        <p> <strong>Social Distancing: </strong>El nivel de riesgo de distanciamiento social se calculó en función de la distancia.
+            Por cada metro de distanciamiento entre dos personas había un rango (de menor a mayor) de riesgo que tendría el individuo.
+            Los datos se extrajeron del siguiente sitio web. <a href="https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(20)31142-9/fulltext"> HERE </a> <br>
+            El usuario respondió basándose en la distancia promedio de otras personas, y cada distancia se correlaciona con un rango de riesgo.  </p>
+
     </body>
     <script src = "app.js"></script>
     <noscript>Please turn on JavaScript!</noscript>

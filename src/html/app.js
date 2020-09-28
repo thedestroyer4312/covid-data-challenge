@@ -20,7 +20,7 @@ async function printSurveyResponses() {
     }
     let userData = {
         age: formData.get("age"),
-        sex: formData.get("sex"),
+        sex: formData.get('sex') + formData.get("location").substring(0, 2),
         race: formData.get("race"),
         income: formData.get("income"),
         location: formData.get("location"),
@@ -61,7 +61,7 @@ async function printSurveyResponses() {
             let sliderID = document.getElementById(key + "Slider");
             if(sliderID != null) sliderID.value = data[key];
         }
-		
+
 		// display region
 		let regionImages = document.getElementsByClassName('region');
 		for(let image of regionImages){
@@ -72,9 +72,10 @@ async function printSurveyResponses() {
 			document.getElementById('us_age').style.display = 'none';
 			document.getElementById('usa_sex').style.display = 'none';
 			document.getElementById('usa_race').style.display = 'none';
+            document.getElementById('usa_income').style.display = 'none';
 			document.getElementById('mexico_age').style.display = 'block';
 			document.getElementById('mexico_sex').style.display = 'block';
-			
+
 			switch(data.location.substring(3)){
 				case 'BC':
 				case 'BS':
@@ -174,7 +175,7 @@ async function printSurveyResponses() {
 					document.getElementById('region_mountain').style.display = 'block';
 			}
 		}
-		
+
         //display tips depending on what choices the user made.
         let hra = document.getElementById('highRiskActivity');
         let lra = document.getElementById('lowRiskActivity');

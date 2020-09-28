@@ -275,58 +275,84 @@
             <strong>Age:</strong> <br>
             Your age is <span id="ageUser"></span>, which has a risk level of <span id="ageRiskUser"></span> <br>
             <label for="ageRiskSlider">1 (Low Risk)</label> <input type="range" id="ageRiskSlider" name="ageRiskSlider" min="0" max="100"> <label for="ageRiskSlider">100 (High Risk)</label> <br>
-			<img src="../../Graphs/Age US.jpg" id="us_age" alt="us age" class="usa" height="500">
-			<img src="../../Graphs/Age Mexico.jpg" id="mexico_age" alt="mexico age" class="mexico" height="500"> <br>
+            <div id="us_age">
+                <img src="Age US.jpg" alt="us age" class="usa" height="500"> <br>
+                The age risk level data shows that 18-29 year olds are at most risk for contracting COVID-19 in the US, and the age group least at risk are 0-4 year olds.
+            </div> <br>
+            <div id="mexico_age">
+                <img src="Age Mexico.jpg" alt="mexico age" class="mexico" height="500"> <br>
+                The age risk level data shows that 35-39 year olds are at most risk for contracting COVID-19 in Mexico, and the age group least at risk are 95-99 year olds.
+            </div> <br>
+
 
             <strong>Sex:</strong> <br>
             Your sex is <span id="sexUser"></span>, which has a risk level of <span id="sexRiskUser"></span> <br>
             <label for="sexRiskSlider">1 (Low Risk)</label> <input type="range" id="sexRiskSlider" name="sexRiskSlider" min="0" max="100"> <label for="sexRiskSlider">100 (High Risk)</label> <br>
-			<img src="../../Graphs/SexMexico.jpg" id="mexico_sex" alt="mexico sex" class="mexico" height="500">
-			<img src="../../Graphs/SexUSA.jpg" id="usa_sex" alt="usa sex" class="usa" height="500"> <br>
+			<img src="SexMexico.jpg" id="mexico_sex" alt="mexico sex" class="mexico" height="500">
+			<img src="SexUSA.jpg" id="usa_sex" alt="usa sex" class="usa" height="500"> <br>
 
-            <strong>Race: (US Only)</strong> <br>
+            <strong>Race: (US Residents Only)</strong> <br>
             Your race is <span id="raceUser"></span>, which has a risk level of <span id="raceRiskUser"></span> <br>
             <label for="raceRiskSlider">1 (Low Risk)</label> <input type="range" id="raceRiskSlider" name="raceRiskSlider" min="0" max="100"> <label for="raceRiskSlider">100 (High Risk)</label> <br>
-			<img src="../../Graphs/COVID-Race-Ethnicity.png" id="usa_race" alt="race and ethnicity" class="usa" height="500"> <br>
+            <div id="usa_race">
+                <img src="COVID-Race-Ethnicity.png" alt="race and ethnicity" class="usa" height="500"> <br>
+                The data shows the distribution of COVID-19 risk levels across different race/ethnicities in the US.
+                The Native Hawaiian/ Pacific Islanders as well as the American Indians/ Alaskan Natives are the groups at most risk for contracting COVID-19.
+            </div> <br>
 
-            <strong>Income:</strong> <br>
+
+            <strong>Income: (US Residents Only)</strong> <br>
             Your income is <span id="incomeUser"></span>, which has a risk level of <span id="incomeRiskUser"></span> <br>
             <label for="incomeRiskSlider">1 (Low Risk)</label> <input type="range" id="incomeRiskSlider" name="incomeRiskSlider" min="0" max="100"> <label for="incomeRiskSlider">100 (High Risk)</label> <br>
-			<img src="../../Graphs/Income Graph.png" alt="income" class="image" height="500"> <br>
+            <div id="usa_income">
+                <img src="Income Graph.png"  alt="income" class="image" height="500"> <br>
+                The risk level based on income shows that statistically, people at a lower income bracket are at more risk for contracting COVID-19.
+                This could be due to several reasons, including lack of resources to protect oneself from COVID-19
+            </div> <br>
 
             <strong>Location:</strong> <br>
             You live in <span id="locationUser"></span>, which has a risk level of <span id="locationRiskUser"></span> <br>
             <label for="locationRiskSlider">1 (Low Risk)</label> <input type="range" id="locationRiskSlider" name="locationRiskSlider" min="0" max="100"> <label for="locationRiskSlider">100 (High Risk)</label> <br>
-			<img src="../../Graphs/COVID Cases-Atlantic Seaboard.png" alt="atlantic seaboard cases" class="region" height="500" id="region_atlantic_seaboard">
-			<img src="../../Graphs/COVID Cases-Midwest.png" alt="midwest cases" class="region" height="500" id="region_midwest">
-			<img src="../../Graphs/COVID Cases-Mountain.png" alt="mountain cases" class="region" height="500" id="region_mountain">
-			<img src="../../Graphs/COVID Cases-New England.png" alt="new england cases" class="region" height="500" id="region_new_england">
-			<img src="../../Graphs/COVID Cases-Sunbelt.png" alt="sunbelt cases" class="region" height="500" id="region_sunbelt">
-			<img src="../../Graphs/COVID Cases-Western USA.png" alt="western usa cases" class="region" height="500" id="region_western_usa">
-			<img src="../../Graphs/COVID_MEXICO_WEST.png" alt="west mexico cases" class="region" height="500" id="region_west_mexico">
-			<img src="../../Graphs/COVID-MX-CENTRAL.png" alt="central mexico cases" class="region" height="500" id="region_central_mexico">
-			<img src="../../Graphs/COVID-MX-NORTHEAST.png" alt="northeast mexico cases" class="region" height="500" id="region_northeast_mexico">
-			<img src="../../Graphs/COVID-MX-NORTHWEST.png" alt="northwest mexico cases" class="region" height="500" id="region_northwest_mexico">
-			<img src="../../Graphs/COVID-MX-Southeast.png" alt="southeast mexico cases" class="region" height="500" id="region_southeast_mexico"> <br>
+			<img src="COVID Cases-Atlantic Seaboard.png" alt="atlantic seaboard cases" class="region" height="500" id="region_atlantic_seaboard">
+			<img src="COVID Cases-Midwest.png" alt="midwest cases" class="region" height="500" id="region_midwest">
+			<img src="COVID Cases-Mountain.png" alt="mountain cases" class="region" height="500" id="region_mountain">
+			<img src="COVID Cases-New England.png" alt="new england cases" class="region" height="500" id="region_new_england">
+			<img src="COVID Cases-Sunbelt.png" alt="sunbelt cases" class="region" height="500" id="region_sunbelt">
+			<img src="COVID Cases-Western USA.png" alt="western usa cases" class="region" height="500" id="region_western_usa">
+			<img src="COVID_MEXICO_WEST.png" alt="west mexico cases" class="region" height="500" id="region_west_mexico">
+			<img src="COVID-MX-CENTRAL.png" alt="central mexico cases" class="region" height="500" id="region_central_mexico">
+			<img src="COVID-MX-NORTHEAST.png" alt="northeast mexico cases" class="region" height="500" id="region_northeast_mexico">
+			<img src="COVID-MX-NORTHWEST.png" alt="northwest mexico cases" class="region" height="500" id="region_northwest_mexico">
+			<img src="COVID-MX-Southeast.png" alt="southeast mexico cases" class="region" height="500" id="region_southeast_mexico"> <br>
+            The location data shows the risk level across states for their respective regions. The dashed line represents the national median risk level (which accounts for all states in the country) <br> <br>
 
             <strong>Job:</strong> <br>
             You said your job is <span id="jobUser"></span>, which has a risk level of <span id="jobRiskUser"></span><br>
             <label for="jobRiskSlider">1 (Low Risk)</label> <input type="range" id="jobRiskSlider" name="jobRiskSlider" min="0" max="100"> <label for="jobRiskSlider">100 (High Risk)</label> <br>
-			<img src="../../Graphs/Occupation risk graph copy.jpg" alt="occupation risk" height="500"> <br>
+			<img src="occupation_risk.jpg" alt="occupation risk" height="500"> <br>
+            The most dangerous careers are ones involving contact with potentially COVID-19 positive patients in the medical field.
+            However, most careers not in the medical field are at a risk below 50, with careers involving more human interaction being more dangerous. <br>
+            Visit <strong>Methods</strong> to see a higher quality picture. <br> <br>
 
             <strong>Activity Risk:</strong> <br>
             Your average risk level from activities is <span id = "avgRiskUser"></span> <br>
             <label for="avgRiskSlider">1 (Low Risk)</label> <input type="range" id="avgRiskSlider" name="avgRiskSlider" min="0" max="100"> <label for="avgRiskSlider">100 (High Risk)</label> <br>
-			<img src="../../Graphs/Activity Chart.png" alt="activity chart" height="500"> <br>
+			<img src="Activity Chart.png" alt="activity chart" height="500"> <br>
+            Activities that involve more human interaction generally involve more risk. For example, getting restaurant takeout involves limited contact with one person at the most,
+            while eating at a buffet involves many people sharing food, touching the same serving utensils, and breathing the same air. <br> <br>
 
             <strong>Mask habit:</strong> <br>
             You said your mask habit is <span id="maskUser"></span>, which has a risk level of <span id="maskRiskUser"></span> <br>
             <label for="maskRiskSlider">1 (Low Risk)</label> <input type="range" id="maskRiskSlider" name="maskRiskSlider" min="0" max="20"> <label for="maskRiskSlider">20 (High Risk)</label> <br>
-			<img src="../../Graphs/Mask Risk Graph copy.png" alt="mask risk" height="500"> <br>
+			<img src="Mask Risk Graph copy.png" alt="mask risk" height="500"> <br>
+            Masks significantly reduce the risk of contracting COVID-19 by more than 80%. To reduce the risk of contracting COVID-19, we encourage mask wearing and face coverings.
+            Based on the data on COVID-19, it is shown mask wearing decreases rates of infection drastically. <br> <br>
 
             <strong>Social Distancing:</strong> <br>
-            You said you maintain an average distance of <span id="socDistUser"></span> from others, which has a risk level in the range of <span id="socDistRiskUser"></span> <br> 
-			<img src="../../Graphs/Social Distancing.jpg" alt="social distancing" height="500"> <br>
+            You said you maintain an average distance of <span id="socDistUser"></span> from others, which has a risk level in the range of <span id="socDistRiskUser"></span> <br>
+			<img src="Social Distancing.jpg" alt="social distancing" height="500"> <br>
+            Social Distancing significantly reduces the risk of contracting COVID-19. The graph above shows the risk percentage as well as the range of risk a person could have to contract COVID-19 based on distance.
+             The closer an individual is on average to another person, the more likely they are to contract COVID-19. <br> <br>
 
             <h2>Tips:</h2>
             <p>Here are some personalized tips and suggestions to help reduce your likelihood to contract COVID-19</p>
@@ -370,8 +396,8 @@
                 We encourage you to continue to refrain from participating in any high risk activities if at all possible.
             </div> <br>
             <p>Want to see how we calculated your risk scores? Check the <strong>Methods</strong> tab for more info!</p>
-		</div>		
-		
+		</div>
+
         <div style="overflow:auto;">
             <div style="float:right;">
                 <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
